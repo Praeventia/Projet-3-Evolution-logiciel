@@ -1,0 +1,18 @@
+{
+    "extends": "./tsconfig.base.json",
+    "compilerOptions": {
+        "outDir": "./out-tsc/app",
+        "types": []
+    },
+    "files": [
+        "src/main.ts",
+        "src/polyfills.ts",
+        "src/app/classes/commands/draw-ellipse-command.ts",
+        "src/app/classes/commands/draw-rectangle-command.ts",
+        "src/app/classes/commands/draw-pencil-command.ts",
+        "./src/app/classes/key-event-masks/default-key-event-mask.ts",
+        "./src/app/classes/key-event-masks/color-key-event-mask.ts",
+        "./src/app/classes/key-event-masks/dialog-key-event-mask.ts"
+    ],
+    "include": ["src/**/*.d.ts"]
+}

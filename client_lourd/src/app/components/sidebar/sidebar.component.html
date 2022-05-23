@@ -1,0 +1,27 @@
+<div class="container unselectable">
+    <div class="sidebar-container">
+        <div class="sidebar-background">
+            <div>
+                <mat-button-toggle-group
+                    [disabled]="!socketService.drawingConnected"
+                    #group="matButtonToggleGroup"
+                    vertical="true"
+                    [value]="currentTool"
+                >
+                    <mat-button-toggle
+                        *ngFor="let tool of columnInformation"
+                        (click)="onToolChanged(tool.tooltype)"
+                        [value]="tool.tooltype"
+                        [matTooltip]="tool.matTooltip"
+                        matTooltipPosition="right"
+                        matTooltipShowDelay="500"
+                        [hidden]="tool.hidden"
+                    >
+                        <img src="{{ tool.src }}" alt="{{ tool.alt }}" width="30" height="30" />
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+        </div>
+    </div>
+    <app-sidebar-properties></app-sidebar-properties>
+</div>

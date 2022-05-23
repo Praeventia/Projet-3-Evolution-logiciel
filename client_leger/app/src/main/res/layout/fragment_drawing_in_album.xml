@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="isEmpty"
+            type="Boolean" />
+        <variable
+            name="isViewer"
+            type="Boolean" />
+        <variable
+            name="isPublic"
+            type="Boolean" />
+        <variable
+            name="joinIsEmpty"
+            type="Boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/lightlightgray">
+
+        <LinearLayout
+            android:id="@+id/drawing_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingEnd="@dimen/small_margin"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="75dp"
+                    android:gravity="center"
+                    android:padding="@dimen/padding_10"
+                    android:text="@string/chat"
+                    android:textSize="@dimen/h1"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/add_people"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/add_user"
+                    app:visibility="@{isViewer || isPublic ? View.GONE : View.VISIBLE}"
+                    android:layout_marginEnd="@dimen/small_margin"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+                <ImageView
+                    android:id="@+id/notification"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="50dp"
+                    android:backgroundTint="@color/red"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/red_dot"
+                    app:visibility="@{isViewer || isPublic || joinIsEmpty ? View.GONE : View.VISIBLE}" />
+
+                <ImageView
+                    android:id="@+id/back"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_back_foreground" />
+
+                <ImageView
+                    android:id="@+id/add_drawing_top"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/new_drawing"
+                    android:layout_marginEnd="@dimen/small_margin"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/add_people"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:visibility="@{isViewer ? View.GONE : View.VISIBLE}"
+                    tools:layout_editor_absoluteX="291dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/drawing_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="12dp"
+                    android:clipToPadding="false"
+                    app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                    app:spanCount="3"
+                    tools:listitem="@layout/list_item_drawing" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="@{isEmpty &amp;&amp; !isViewer ? View.VISIBLE : View.GONE}">
+
+                    <TextView
+                        android:id="@+id/emptyDrawing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/emptyAlbum"
+                        android:textAppearance="?attr/textAppearanceHeadline5" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/add_drawing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:text="@string/addDrawing"
+                        app:backgroundTint="@color/blue"/>
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragment_container_view"
+            android:name="com.client_leger.colorimage.album.AddUsersToAlbumFragment"
+            android:layout_width="650dp"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="#BBFFFFFF"
+            android:backgroundTint="@color/black"/>
+
+        <TextView
+            android:id="@+id/empty_add_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/emptyAddUser"
+            android:textColor="@color/white"
+            android:textAppearance="?attr/textAppearanceHeadline5"
+            android:visibility="@{joinIsEmpty ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@+id/fragment_container_view"
+            app:layout_constraintEnd_toEndOf="@+id/fragment_container_view"
+            app:layout_constraintStart_toStartOf="@+id/drawing_view"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/full_screen_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

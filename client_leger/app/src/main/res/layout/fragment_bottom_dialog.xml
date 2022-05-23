@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/modal_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="@color/purple"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/select_avatar"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:layout_margin="@dimen/small_margin"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="@dimen/h3"
+                />
+
+        </LinearLayout>
+
+
+
+        <TextView
+            android:id="@+id/default_avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_default_avatar"
+            android:textSize="@dimen/h4"
+            android:layout_margin="@dimen/small_margin"
+            />
+
+        <TextView
+            android:id="@+id/camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_camera_avatar"
+            android:textSize="@dimen/h4"
+            android:layout_margin="@dimen/small_margin"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>

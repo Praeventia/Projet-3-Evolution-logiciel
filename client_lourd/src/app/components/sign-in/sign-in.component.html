@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="form">
+        <header>
+            <h2>connexion</h2>
+        </header>
+        <div class="content">
+            <form>
+                <mat-form-field class="courriel">
+                    <mat-label>courriel</mat-label>
+                    <input type="email" matInput [formControl]="emailFormControl" (change)="resetErrors()" id="email" />
+                    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                        veuillez enter un courriel valide
+                    </mat-error>
+                    <mat-error *ngIf="emailFormControl.hasError('required') && !emailFormControl.hasError('auth_incorrect')">
+                        le courriel est <strong>obligatoire</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <br />
+
+                <mat-form-field class="mot-de-passe">
+                    <mat-label>mot de passe</mat-label>
+                    <input
+                        type="password"
+                        matInput
+                        [type]="hide ? 'password' : 'text'"
+                        [formControl]="passwordFormControl"
+                        (change)="resetErrors()"
+                        id="password"
+                    />
+                    <mat-icon matSuffix (click)="hide = !hide">{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    <mat-error *ngIf="passwordFormControl.hasError('required') && !passwordFormControl.hasError('auth_incorrect')">
+                        le mot de passe est <strong>obligatoire</strong>
+                    </mat-error>
+                    <mat-error *ngIf="passwordFormControl.hasError('auth_incorrect')"
+                        >le courriel ou le mot de passe est <strong>incorrect</strong></mat-error
+                    >
+                </mat-form-field>
+            </form>
+        </div>
+        <footer>
+            <div class="submit">
+                <button mat-button routerLink="/home">annuler</button>
+                <button mat-button [disabled]="passwordFormControl.invalid || emailFormControl.invalid" color="primary" (click)="connect()">
+                    se connecter
+                </button>
+            </div>
+            <br />
+            <br />
+            <div class="signup">
+                <div>vous n'avez pas de compte?</div>
+                <button mat-button routerLink="/signup">s'inscrire</button>
+            </div>
+        </footer>
+    </div>
+</div>

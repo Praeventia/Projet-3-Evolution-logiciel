@@ -1,0 +1,18 @@
+<resources>
+
+    <style name="Widget.Theme.ColorImage.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">@color/black_overlay</item>
+        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+    </style>
+
+    <style name="MaterialAlertDialogText" parent="@style/MaterialAlertDialog.MaterialComponents.Title.Text">
+        <item name="android:textColor">@color/purple</item>
+    </style>
+
+    <style name="TextInputLayoutAppearance" parent="Theme.MaterialComponents.Light">
+        <item name="colorPrimary">@color/red</item>
+    </style>
+
+
+
+</resources>

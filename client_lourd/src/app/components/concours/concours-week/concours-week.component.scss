@@ -1,0 +1,48 @@
+section {
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        h1 {
+            font-weight: 800;
+            font-size: 1.5em;
+            margin: 0;
+            padding: 0;
+            width: fit-content;
+        }
+        h2 {
+            font-weight: 500;
+            font-size: 1.2em;
+        }
+    }
+
+    footer {
+        div {
+            width: 100%;
+
+            position: absolute;
+            left: 0;
+            app-winner:nth-child(1) {
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%, 0);
+                z-index: 3;
+            }
+            app-winner:nth-child(2) {
+                position: absolute;
+                left: calc(50% - 475px);
+                top: 75px;
+                transform: translate(-50%, 0);
+                z-index: 2;
+            }
+            app-winner:nth-child(3) {
+                position: absolute;
+                left: calc(50% + 475px);
+                top: 75px;
+                transform: translate(-50%, 0);
+                z-index: 1;
+            }
+        }
+    }
+}

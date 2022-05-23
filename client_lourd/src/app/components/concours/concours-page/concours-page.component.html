@@ -1,0 +1,43 @@
+<section>
+    <app-topbar [pageTitle]="' concours'" [pageUrl]="'https://img.icons8.com/color/48/000000/medal2--v1.png'"></app-topbar>
+    <mat-spinner [diameter]="100" class="center-spinner" *ngIf="concoursService.concoursIsLoading"></mat-spinner>
+    <div *ngIf="!concoursService.concoursIsLoading" class="page">
+        <div>
+            <button mat-button routerLink="/entries"><img class="icons8" src="https://img.icons8.com/color/48/000000/like--v3.png" /> voter</button>
+            <button mat-button routerLink="/submissions">
+                <img class="icons8" src="https://img.icons8.com/fluency/48/000000/picture.png" /> mes soumissions
+            </button>
+            <button mat-button *ngIf="concoursService.canPublishToConcours" routerLink="/dessins/@contributions">
+                <img class="icons8" [src]="'@app/../assets/icons8-heart-48.png'" /> participer
+            </button>
+        </div>
+        <div>
+            <app-concours-week [concours]="concoursService.currentConcours"></app-concours-week>
+            <div class="participer" *ngIf="concoursService.currentConcours?.winners?.length === 0">
+                <div>participez et vôtre dessin apparaitera ici!</div>
+                <button mat-button *ngIf="concoursService.canPublishToConcours" routerLink="/dessins/@contributions">
+                    <img class="icons8" [src]="'@app/../assets/icons8-heart-48.png'" /> participer
+                </button>
+            </div>
+            <div class="leaderboard" (click)="scroll(old)">
+                <div>voir les concours antérieurs!</div>
+                <button mat-button (click)="scroll(old)">
+                    <img class="icons8" [src]="'https://img.icons8.com/color/48/000000/medal2--v1.png'" /> concours antérieurs
+                </button>
+            </div>
+        </div>
+
+        <div #old>
+            <div *ngFor="let concours of concoursService.pastConcoursWithWinners()">
+                <app-concours-week [concours]="concours"></app-concours-week>
+            </div>
+        </div>
+        <app-chat
+            *ngIf="chatHandlerService.chatVisible && socketService.chatConnected && !chatHandlerService.chatInExternalWindow"
+            cdkDragBoundary=".page"
+            class="app-chat"
+            cdkDrag
+        >
+        </app-chat>
+    </div>
+</section>

@@ -1,0 +1,24 @@
+<div class="container" *ngIf="!isHidden" #container>
+    <section (mousedown)="$event.stopPropagation()">
+        <header class="unselectable">
+            <h1>couleur {{ colorService.colorTitle }}</h1>
+        </header>
+        <div class="color-wrapper">
+            <app-color-palette></app-color-palette>
+            <app-color-hue-slider></app-color-hue-slider>
+            <div *ngIf="showAlphaSlider()">
+
+                <app-color-alpha-slider></app-color-alpha-slider>
+            </div>
+        </div>
+        <div class="flex-row">
+            <app-color-hex #colorHex></app-color-hex>
+            <div class="buttons">
+                <button mat-button (click)="cancelSelectedColor()">annuler</button>
+                <button mat-button (click)="acceptSelectedColor()" [disabled]="colorHex.hexColorFormControl.hasError('pattern')" color="primary">
+                    Ok
+                </button>
+            </div>
+        </div>
+    </section>
+</div>

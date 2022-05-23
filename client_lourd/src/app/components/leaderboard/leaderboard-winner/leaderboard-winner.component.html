@@ -1,0 +1,8 @@
+<div>
+    <img [src]="winner.url" alt="image placeholder" />
+    <div>{{ winner.username }}</div>
+    <div>{{ winner.score }}</div>
+    <span *ngIf="position === 1"><img class="icons8 large" src="https://img.icons8.com/color/48/000000/medal2--v1.png" /></span>
+    <span *ngIf="position === 3"><img class="icons8 large" src="https://img.icons8.com/color/48/000000/medal2-third-place--v1.png" /></span>
+    <span *ngIf="position === 2"><img class="icons8 large" src="https://img.icons8.com/color/48/000000/medal-second-place--v1.png" /></span>
+</div>

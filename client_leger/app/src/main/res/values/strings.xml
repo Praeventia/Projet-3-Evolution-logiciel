@@ -1,0 +1,152 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">ColorImage</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="main_fragment_label">Main Fragment</string>
+    <string name="login_fragment_label">Login Fragment</string>
+    <string name="signin_fragment_label">Signin Fragment</string>
+    <string name="chat_fragment_label">Chat Fragment</string>
+    <string name="profile_fragment_label">Profile Fragment</string>
+    <string name="edit_profile_fragment_label">Edit Profile Fragment</string>
+    <string name="avatar_gallery_fragment_label">Avatar Gallery Fragment</string>
+    <string name="bottom_modal_fragment">Bottom Modal Fragment</string>
+    <string name="login_history_fragment">Login History Fragment</string>
+    <string name="contest_fragment">Contest Fragment</string>
+    <string name="contest_vote_fragment">Contest Vote Fragment</string>
+    <string name="leaderboard_fragment">Leaderboard Fragment</string>
+
+    <string name="submit_contest_drawing_fragment">Submit Contest Drawing Fragment</string>
+    <string name="participate_contesnt_fragment">Participate Contest Fragment</string>
+
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="submit">Soumettre</string>
+    <string name="home">Accueil</string>
+    <string name="close">x</string>
+    <string name="save">Enregistrer</string>
+    <string name="loading">Chargement en cours</string>
+
+    <string name="drawing">Dessin</string>
+    <string name="avatar">Avatar</string>
+    <string name="edit_avatar">Modifier mon Avatar</string>
+    <string name="select_avatar">Choisir un avatar</string>
+    <string name="image_gallery">Gallerie d\'image</string>
+    <string name="select_default_avatar">Choisir avatar par défault</string>
+    <string name="select_camera_avatar">Choisir avatar avec caméra</string>
+
+    <string name="create_drawing">Créer un dessin</string>
+    <string name="join_drawing">Albums de dessins</string>
+    <string name="contest">Concours</string>
+
+    <string name="signin">Créer un compte</string>
+    <string name="login">Se connecter</string>
+    <string name="vertical_bar">|</string>
+
+    <string name="username_or_email">Nom d\'utilisateur ou courriel</string>
+    <string name="password">Mot de passe</string>
+
+    <string name="first_name">Prénom</string>
+    <string name="last_name">Nom</string>
+    <string name="email">Courriel électronique</string>
+    <string name="username">Nom d\'utilisateur</string>
+    <string name="confirm_password">Confirmez mot de passe</string>
+    <string name="informations">Informations</string>
+    <string name="albums">Albums</string>
+    <string name="stats">Statistiques</string>
+    <string name="last_connection">Dernière connexion</string>
+    <string name="login_history">Historique de connexion</string>
+    <string name="protect_email">Protéger courriel électronique</string>
+
+
+    <string name="chat">Messagerie</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">Bonjour</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_chat">ChatActivity</string>
+    <string name="title_activity_drawing">DrawingActivity</string>
+    <string name="title_activity_album">AlbumActivity</string>
+
+
+    <string name="pencil">✏️</string>
+    <string name="circle">⭕</string>
+    <string name="rectangles">❏</string>
+    <string name="delete">🗑️️</string>
+    <string name="selection">✋</string>
+    <string name="text">📝</string>
+    <string name="fond">Fond transparent</string>
+
+    <string name="totalCollaboration">de temps total de collaboration</string>
+    <string name="averageCollaboration">de temps moyen de collaboration</string>
+
+    <string name="albums_own">albums créés</string>
+    <string name="albums_joined">albums joints</string>
+    <string name="drawing_own">dessins créés</string>
+    <string name="drawing_contributed">contributions de dessins</string>
+    <string name="pixel_cross">pixels parcourus</string>
+    <string name="message_sent">messages envoyés</string>
+    <string name="private_album_join">albums privés joints</string>
+
+    <string name="week_contest">Concours de la semaine</string>
+    <string name="contest_theme">Thème</string>
+    <string name="hourglass">Prend fin le</string>
+    <string name="ended_on">Terminé le</string>
+    <string name="leaderboard">Leaderboard</string>
+    <string name="vote">Votez</string>
+    <string name="participate">Participer</string>
+    <string name="my_submission">Mes soumissions</string>
+
+    <string name="first_pos">1</string>
+    <string name="second_pos">2</string>
+    <string name="third_pos">3</string>
+
+    <string name="layers">🗂</string>
+    <string name="peopleConnected">👥</string>
+
+    <string name="myAlbum">Mes albums</string>
+    <string name="AlbumList">Liste d\'albums</string>
+    <string name="albumShare">Album d\'exposition</string>
+    <string name="album">Album de dessins</string>
+    <string name="albumEmpty">Vous avez rejoint tous les albums privés disponibles!\n \t Revenez plus tard pour rejoindre d\'autres albums</string>
+    <string name="expositionEmpty">Il n\'y a aucun dessin d\'exposé pour le moment! \n \t Revenez plus tard pour découvrir des dessins</string>
+    <string name="emptyAlbum">Il n\'y aucun dessin dans cet album</string>
+    <string name="addDrawing">Ajouter un dessin</string>
+
+    <string name="drawingName">Nom du dessin</string>
+    <string name="createDrawing">Création d\'un dessin</string>
+    <string name="protectByPassword">Protéger par mot de passe</string>
+    <string name="chooseAlbum">Choisir un album:</string>
+    <string name="confirm"> Confirmer</string>
+    <string name="cancel">Annuler</string>
+    <string name="modify_parameter_album">Modifier les paramètre de l\'album</string>
+    <string name="albumName">Nom de l\'album</string>
+    <string name="albumDescription">Description de l\'album</string>
+    <string name="needPassword">Mot de passe requis</string>
+    <string name="no_drawing">Aucun Dessin</string>
+    <string name="current_week">Semaine Courante</string>
+    <string name="past_week">Semaines antérieures</string>
+
+    <string name="contest_vote">Vote - Concours</string>
+    <string name="contest_participate">Participer au concours</string>
+    <string name="up_vote">Nombre de 👍</string>
+    <string name="down_vote">Nombre de 👎</string>
+    <string name="like">👍</string>
+    <string name="dislike">👎</string>
+    <string name="contest_available_votes">Nombre de votes restant</string>
+    <string name="week">Semaine</string>
+    <string name="recent_drawing">Dessin récemment éditée</string>
+    <string name="select_drawing_participate">Choisissez un dessin pour participer au concours</string>
+
+
+    <string name="selectedBySomeone" tools:ignore="ExtraTranslation">Sélectionné par : </string>
+    <string name="emptyAddUser">Aucun utilisateur à ajouter</string>
+
+</resources>

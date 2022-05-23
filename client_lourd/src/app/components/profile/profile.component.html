@@ -1,0 +1,155 @@
+<section>
+    <app-topbar [pageTitle]="'page de profile'" [pageUrl]="'https://img.icons8.com/fluency/48/000000/administrator-male.png'"></app-topbar>
+    <div class="page">
+        <mat-spinner [diameter]="100" class="center-spinner" *ngIf="profileService.isLoading"></mat-spinner>
+        <div class="main-container" *ngIf="!profileService.isLoading">
+            <div>
+                <div class="content-container">
+                    <div class="card-title">
+                        <h1>avatar</h1>
+                    </div>
+                    <div class="avatar-container">
+                        <div class="editPhoto">
+                            <button
+                                (click)="openAvatarDialog()"
+                                matTooltipClass="tooltip"
+                                [matTooltip]="'Modifier son avatar'"
+                                matTooltipPosition="right"
+                                matTooltipShowDelay="500"
+                            >
+                                <mat-icon>photo_camera</mat-icon>
+                            </button>
+                        </div>
+                        <img class="frame" [src]="this.avatarService.chosenAvatar" alt="Votre avatar" (click)="openAvatarDialog()" />
+                    </div>
+                </div>
+                <div class="content-container">
+                    <div>
+                        <div class="card-title space-between">
+                            <h1>informations</h1>
+                            <button
+                                mat-icon-button
+                                (click)="openEditDialog()"
+                                matTooltipClass="tooltip"
+                                [matTooltip]="'Modifier ses informations'"
+                                matTooltipPosition="right"
+                                matTooltipShowDelay="500"
+                            >
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                        </div>
+                        <div class="info-item">
+                            <h2>pseudonyme</h2>
+                            <h3>
+                                {{ this.userService.user?.username }}
+                            </h3>
+                        </div>
+                        <div class="info-item">
+                            <h2>courriel</h2>
+                            <h3>
+                                {{ this.userService.user?.email }}
+                            </h3>
+                        </div>
+                        <div class="info-item">
+                            <div class="space-between">
+                                <h2>protéger mon courriel</h2>
+                                <mat-slide-toggle [(ngModel)]="this.profileService.emailProtected" (click)="this.profileService.toggleEmail()">
+                                </mat-slide-toggle>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="space-between">
+                                <h2>dernière connexion</h2>
+                                <button
+                                    mat-button
+                                    (click)="openLoginHistory()"
+                                    matTooltipClass="tooltip"
+                                    [matTooltip]="'Historique de connexions'"
+                                    matTooltipPosition="right"
+                                    matTooltipShowDelay="500"
+                                    id="history-button"
+                                >
+                                    <span> historique </span>
+                                    <mat-icon>history</mat-icon>
+                                </button>
+                            </div>
+
+                            <h3>
+                                {{ this.profileService.lastLogin }}
+                            </h3>
+
+                            <h2 *ngIf="profileService.lastDeconnection">dernière déconnexion</h2>
+                            <h3 *ngIf="profileService.lastDeconnection">
+                                {{ this.profileService.lastDeconnection }}
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-container">
+                    <div class="card-title">
+                        <h1>statistiques</h1>
+                    </div>
+                    <div>
+                        <div class="stat">
+                            <span>{{ profileService.totalCollabTime }}</span>
+                            <h3>de temps total de collaboration</h3>
+                        </div>
+                        <div class="stat">
+                            <span>{{ profileService.averageCollabTime }}</span>
+                            <h3>de temps moyen de collaboration</h3>
+                        </div>
+                        <div class="stat">
+                            <span>{{ profileService.albumService.joinedAlbums.length }}</span>
+                            <h3>albums joints</h3>
+                        </div>
+                        <div class="stat">
+                            <span>{{ profileService.privateAlbums }}</span>
+                            <h3>albums privés joints</h3>
+                        </div>
+                        <div class="stat">
+                            <span>{{ profileService.albumService.myAlbums.length }}</span>
+                            <h3>albums créés</h3>
+                        </div>
+                        <div class="stat">
+                            <span>{{ profileService.drawingsOwned }}</span>
+                            <h3>dessins créés</h3>
+                        </div>
+                        <div class="stat">
+                            <span>{{ profileService.drawingHistory.length }}</span>
+                            <h3>collaboration de dessins</h3>
+                        </div>
+                        <div class="stat">
+                            <span>{{ profileService.totalPixels }}</span>
+                            <h3>pixels parcourus</h3>
+                        </div>
+                        <div class="stat">
+                            <span>{{ profileService.messagesSent }}</span>
+                            <h3>messages envoyés</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-container">
+                <div class="right-title">
+                    <h1>dessins récents</h1>
+                </div>
+                <div class="carousel">
+                    <div *ngFor="let drawingInfo of profileService.drawingHistory">
+                        <div class="slideElement">
+                            <app-album-drawing [drawing]="drawingInfo"></app-album-drawing>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <app-chat
+                *ngIf="chatHandlerService.chatVisible && socketService.chatConnected && !chatHandlerService.chatInExternalWindow"
+                cdkDragBoundary=".page"
+                class="app-chat"
+                cdkDrag
+            >
+            </app-chat>
+        </div>
+    </div>
+</section>

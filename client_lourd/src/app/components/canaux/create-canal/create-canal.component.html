@@ -1,0 +1,32 @@
+<div class="container">
+  <h1 mat-dialog-title>nouveau canal</h1>
+  <section>
+    <div id="saving-options">
+      <form>
+        <mat-form-field>
+          <mat-label>nom du canal</mat-label>
+          <input matInput (change)="resetErrors()" [formControl]="titleFormControl" [maxlength]="MAX_TITLE_SIZE"
+            autocomplete="off" />
+          <mat-error
+            *ngIf="titleFormControl.hasError('pattern') && !titleFormControl.hasError('required') && !titleFormControl.hasError('conflict')">
+            veuillez n'utiliser que des lettres, chiffres, des '_', des '-' ou des espaces
+          </mat-error>
+          <mat-error
+            *ngIf="titleFormControl.hasError('maxlength') && !titleFormControl.hasError('required') && !titleFormControl.hasError('conflict')">
+            25 caractères maximum
+          </mat-error>
+
+          <mat-error *ngIf="titleFormControl.hasError('required') && !titleFormControl.hasError('conflict')"> le nom du
+            canal est <strong>obligatoire</strong>
+          </mat-error>
+          <mat-error *ngIf="titleFormControl.hasError('conflict')"> il existe déjà un canal avec ce nom</mat-error>
+
+        </mat-form-field>
+      </form>
+    </div>
+  </section>
+  <mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="undefined">annuler</button>
+    <button mat-button (click)="tryCreate()" color="primary" [disabled]="titleFormControl.invalid">ok</button>
+  </mat-dialog-actions>
+</div>

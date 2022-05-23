@@ -1,0 +1,26 @@
+<div class="container">
+    <div>
+        <span>trait</span>
+        <svg width="50" height="50" viewBox="0 0 100 100">
+            <svg (click)="colorService.primaryColorClicked()" [style.fill]="primaryColor.hsla()">
+                <circle cx="50" cy="50" r="50" />
+            </svg>
+        </svg>
+    </div>
+    <div *ngIf="!showAllColors">
+        <span>intérieur</span>
+        <svg width="50" height="50" viewBox="0 0 100 100">
+            <svg (click)="colorService.secondaryColorClicked()" [style.fill]="secondaryColor.hsla()">
+                <circle cx="50" cy="50" r="50" />
+            </svg>
+        </svg>
+    </div>
+    <div *ngIf="!showAllColors">
+        <span>texte</span>
+        <svg width="50" height="50" viewBox="0 0 100 100">
+            <svg (click)="colorService.textColorClicked()" [style.fill]="textColor.hsla()">
+                <circle cx="50" cy="50" r="50" />
+            </svg>
+        </svg>
+    </div>
+</div>

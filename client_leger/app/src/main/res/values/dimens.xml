@@ -1,0 +1,68 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="small_margin">10dp</dimen>
+    <dimen name="margin_20">20dp</dimen>
+    <dimen name="margin_25">25dp</dimen>
+    <dimen name="margin_30">30dp</dimen>
+    <dimen name="margin_40">40dp</dimen>
+    <dimen name="margin_50">50dp</dimen>
+
+
+    <dimen name="in_between_margin">20dp</dimen>
+
+    <dimen name="padding_10">10dp</dimen>
+    <dimen name="padding_15">15dp</dimen>
+    <dimen name="padding_20">20dp</dimen>
+    <dimen name="padding_30">30dp</dimen>
+    <dimen name="padding_40">40dp</dimen>
+    <dimen name="padding_50">50dp</dimen>
+
+    <dimen name="space">2dp</dimen>
+
+    <dimen name="small_border">3dp</dimen>
+    <dimen name="avatar_icon">70dp</dimen>
+    <dimen name="avatar_icon_small">43dp</dimen>
+
+    <dimen name="icon_small">20dp</dimen>
+    <dimen name="icon">30dp</dimen>
+    <dimen name="icon_xl">50dp</dimen>
+
+    <dimen name="avatar_default_size">250dp</dimen>
+    <dimen name="leaderboard_avatar">200dp</dimen>
+    <dimen name="contest_image_width">260dp</dimen>
+    <dimen name="contest_image_height">150dp</dimen>
+
+    <dimen name="second_pos_align">30dp</dimen>
+    <dimen name="third_pos_align">50dp</dimen>
+
+
+    <dimen name="input_chat_fullscreen">1200dp</dimen>
+    <dimen name="body_chat_height">1200dp</dimen>
+
+
+    <dimen name="button_width">400dp</dimen>
+    <dimen name="login_width">700dp</dimen>
+    <dimen name="input_login_width">400dp</dimen>
+    <dimen name="label_login_width">280dp</dimen>
+
+    <dimen name="h1">35sp</dimen>
+    <dimen name="h2">30sp</dimen>
+    <dimen name="h3">25sp</dimen>
+    <dimen name="h4">20sp</dimen>
+    <dimen name="h5">15sp</dimen>
+
+    <dimen name="small_text">10sp</dimen>
+
+    <dimen name="default_text">15sp</dimen>
+    <dimen name="button_text">20sp</dimen>
+    <dimen name="logo_text">150sp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+
+    <dimen name="chat_max_width">20dp</dimen>
+    <dimen name="list_item_spacing">16dp</dimen>
+    <dimen name="list_item_spacing_half">8dp</dimen>
+
+</resources>

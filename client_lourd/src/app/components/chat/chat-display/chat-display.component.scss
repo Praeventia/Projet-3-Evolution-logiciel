@@ -1,0 +1,58 @@
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    min-height: 200px !important;
+    width: 100%;
+}
+
+.down {
+    width: 100%;
+}
+
+.bubbles {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    border-radius: 8px;
+    max-height: 600px;
+    width: 100%;
+    & > div {
+        max-width: 80%;
+        align-items: unset;
+    }
+}
+
+.user-bubble {
+    width: fit-content;
+    height: fit-content;
+    align-self: flex-end;
+}
+.others-bubble {
+    width: fit-content;
+    height: fit-content;
+    align-self: flex-start;
+}
+
+.submit {
+    width: 40px;
+    height: 40px;
+}
+
+.room {
+    padding: 0px 4px;
+    margin: 0;
+    text-align: start;
+    max-width: min-content;
+}
+
+.input {
+    width: 100%;
+}
+form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}

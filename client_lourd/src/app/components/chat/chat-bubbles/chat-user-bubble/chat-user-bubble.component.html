@@ -1,0 +1,9 @@
+<section>
+    <header>
+        <span class="username">{{ message.username }}</span>
+        <span class="timestamp">{{ message.timestamp | date: 'HH:mm:ss' }} </span>
+    </header>
+    <footer class="message">
+        {{ message.message }}
+    </footer>
+</section>

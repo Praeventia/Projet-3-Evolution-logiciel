@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_room_no_buttons_layout"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:layout_gravity="start"
+    android:layout_marginHorizontal="@dimen/small_margin"
+    android:layout_marginVertical="5dp"
+    app:cardElevation="0dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/small_margin"
+        android:background="@drawable/channel_selector">
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/unread_count"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/badge_background"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginEnd="@dimen/small_margin"
+            android:text="0"
+            android:textColor="@android:color/white"
+            android:textSize="10sp"/>
+
+        <TextView
+            android:id="@+id/roomName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="500"
+            android:layout_gravity="center"
+            android:text="maaaaaaaaaaaaaaaaaaaaaaax"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/right_arrow"
+            android:scaleType="centerInside"/>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

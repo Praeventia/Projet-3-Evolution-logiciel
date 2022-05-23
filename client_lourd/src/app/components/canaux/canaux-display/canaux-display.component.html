@@ -1,0 +1,35 @@
+<footer>
+    <section class="input">
+        <form>
+            <mat-form-field>
+                <input
+                    type="text"
+                    (focus)="onFocus()"
+                    (blur)="onBlur()"
+                    matInput
+                    placeholder="🔍 rechercher un canal existant"
+                    #input
+                    [matAutocomplete]="auto"
+                />
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                    <mat-option *ngFor="let canal of filterCanaux(input.value)" [value]="canal.name" (click)="canauxService.view(canal.name)">
+                        {{ canal.name }}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+            <button mat-icon-button matTooltipClass="tooltip" [matTooltip]="'nouveau canal'" (click)="createDialog()">
+                <i class="fa-solid fa-circle-plus"></i>
+            </button>
+        </form>
+    </section>
+    <section class="canaux-list">
+        <app-canal class="canaux joined" *ngFor="let canal of canauxService.pinnedCanaux" [canal]="canal"> </app-canal>
+    </section>
+
+    <section class="canaux-list" *ngIf="canauxService.otherCanaux.length">
+        <br />
+        <app-canal class="canaux joined" *ngFor="let canal of canauxService.otherCanaux" [canal]="canal"> </app-canal>
+        <mat-spinner *ngIf="canauxService.canauxLoading && !canauxService.quitLoading" [diameter]="30"></mat-spinner>
+    </section>
+</footer>

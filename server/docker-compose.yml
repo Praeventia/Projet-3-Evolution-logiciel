@@ -1,0 +1,56 @@
+services:
+  db:
+    image: mongo
+    container_name: db
+    expose:
+      - 27017
+    command: ["--bind_ip_all"]
+    ports:
+      - 27017:27017
+    restart: unless-stopped
+
+  server:
+    container_name: backend
+    depends_on:
+      - db
+    build: .
+    ports:
+      - 192.168.0.10:3000:3000
+    restart: unless-stopped
+
+  ddclient:
+    container_name: ddclient
+    depends_on:
+      - server
+    build: ./config_server/ddclient/
+    volumes:
+      - ./config_server/ddclient/config:/config
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+    restart: unless-stopped 
+
+
+  deploy-on-the-web:
+    depends_on:
+      - ddclient
+    build: ./config_server/nginx/
+    container_name: deploy
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+      - URL=backendpi3.fibiess.com
+      - VALIDATION=http
+      - CERTPROVIDER=zerossl
+      - EMAIL=marcoderouin@gmail.com
+    volumes:
+      - ./config_server/nginx/config:/config
+    ports:
+      - 192.168.0.10:443:443
+      - 192.168.0.10:80:80
+    restart: unless-stopped
+

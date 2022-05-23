@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="viewModel"
+            type="com.client_leger.colorimage.album.view_model.DrawingViewModel"/>
+        <variable
+            name="isViewer"
+            type="boolean" />
+        <variable
+            name="isPublic"
+            type="boolean" />
+    </data>
+
+    <com.client_leger.colorimage.album.view.MaskedCardView
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="26dp"
+        android:onClick="@{clickListener}"
+        app:cardElevation="2dp"
+        app:cardPreventCornerOverlap="false">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image_Album"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:scaleType="centerInside"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <ImageView
+                android:id="@+id/delete"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:visibility="@{viewModel.isOwner ? View.VISIBLE : View.GONE }"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image_Album"
+                app:srcCompat="@drawable/ic_delete_foreground" />
+
+
+            <LinearLayout
+                android:id="@+id/drawing_name_wrapper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:maxWidth="500dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image_Album"
+                android:gravity="center_vertical"
+                >
+
+                <ImageView
+                    android:id="@+id/drawingName"
+                    android:layout_width="@dimen/icon"
+                    android:layout_height="@dimen/icon"
+                    android:contentDescription="@string/drawing"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/small_margin"
+                    android:src="@drawable/pencil"/>
+
+                <TextView
+                    android:id="@+id/album_name"
+                    android:layout_width="wrap_content"
+                    android:scrollbars="horizontal"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="@{viewModel.drawingName}"
+                    android:textSize="20sp"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:textStyle="bold"
+                    />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/ownerName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="15dp"
+                android:gravity="start"
+                android:text="@{viewModel.ownerName}"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/drawing_name_wrapper"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+
+            <ImageView
+                android:id="@+id/viewer"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:layout_constraintEnd_toStartOf="@id/delete"
+                app:layout_constraintTop_toBottomOf="@id/image_Album"
+                app:srcCompat="@drawable/ic_viewer_foreground"
+                app:visibility="@{!isPublic &amp;&amp; !viewModel.exposed &amp;&amp; !isViewer ? View.VISIBLE : View.GONE}"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageView
+                android:id="@+id/viewer_unexpose"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:layout_constraintEnd_toStartOf="@id/delete"
+                app:layout_constraintTop_toBottomOf="@id/image_Album"
+                app:visibility="@{!isPublic &amp;&amp; viewModel.exposed &amp;&amp; !isViewer ? View.VISIBLE : View.GONE}"
+                app:srcCompat="@mipmap/ic_eye_cross_foreground"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageView
+                android:id="@+id/locker"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/creationDate"
+                app:visibility="@{viewModel.needPassword &amp;&amp; !isViewer ? View.VISIBLE : View.GONE}"
+                app:srcCompat="@drawable/ic_locked_foreground"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageView
+                android:id="@+id/imagePeople"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                app:visibility="@{!isViewer ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/numberPeople"
+                app:srcCompat="@drawable/ic_people_foreground" />
+
+            <TextView
+                android:id="@+id/numberPeople"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="16dp"
+                android:gravity="start"
+                android:text="@{viewModel.numberOfPeopleEditing}"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                app:visibility="@{!isViewer ? View.VISIBLE : View.GONE}"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ownerName"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+            <TextView
+                android:id="@+id/creationDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="end"
+                android:text="@{viewModel.creationDate}"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                android:textSize="15sp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.client_leger.colorimage.album.view.MaskedCardView>
+</layout>

@@ -1,0 +1,57 @@
+<div class="container">
+    <h1 mat-dialog-title>paramètres de l'album</h1>
+    <section>
+        <div id="saving-options">
+            <form>
+                <mat-form-field>
+                    <mat-label>nom de l'album</mat-label>
+                    <input matInput (change)="resetErrors()" [formControl]="titleFormControl" [maxlength]="MAX_TITLE_SIZE" autocomplete="off" />
+                    <mat-error
+                        *ngIf="
+                            titleFormControl.hasError('pattern') && !titleFormControl.hasError('required') && !titleFormControl.hasError('conflict')
+                        "
+                    >
+                        veuillez n'utiliser que des lettres, chiffres, des '_', des '-' ou des espaces
+                    </mat-error>
+                    <mat-error
+                        *ngIf="
+                            titleFormControl.hasError('maxlength') && !titleFormControl.hasError('required') && !titleFormControl.hasError('conflict')
+                        "
+                    >
+                        25 caractères maximum
+                    </mat-error>
+
+                    <mat-error *ngIf="titleFormControl.hasError('required') && !titleFormControl.hasError('conflict')">
+                        le nom de l'album est <strong>obligatoire</strong>
+                    </mat-error>
+                    <mat-error *ngIf="titleFormControl.hasError('conflict')"> il existe déjà un album avec ce nom</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>description</mat-label>
+                    <input
+                        matInput
+                        [value]="data.album.description"
+                        [formControl]="descriptionFormControl"
+                        [maxlength]="MAX_DESCRIPTION_SIZE"
+                        autocomplete="off"
+                    />
+                    <mat-error *ngIf="descriptionFormControl.hasError('pattern') && !descriptionFormControl.hasError('required')">
+                        veuillez n'utiliser que des lettres, chiffres, des '_', des '-' ou des espaces
+                    </mat-error>
+                    <mat-error *ngIf="descriptionFormControl.hasError('maxlength') && !descriptionFormControl.hasError('required')">
+                        25 caractères maximum
+                    </mat-error>
+                    <mat-error *ngIf="descriptionFormControl.hasError('required')">
+                        la description de l'album est
+                        <strong>obligatoire</strong>
+                    </mat-error>
+                </mat-form-field>
+            </form>
+        </div>
+    </section>
+    <mat-dialog-actions>
+        <button mat-button [mat-dialog-close]="undefined">annuler</button>
+        <button mat-button (click)="tryEdit()" color="primary" [disabled]="titleFormControl.invalid || descriptionFormControl.invalid">ok</button>
+    </mat-dialog-actions>
+</div>

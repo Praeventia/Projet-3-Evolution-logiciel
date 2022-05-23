@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginStart="@dimen/small_margin"
+    android:layout_marginEnd="@dimen/small_margin"
+    app:cardElevation="2dp"
+    app:cardCornerRadius="12dp"
+    android:padding="@dimen/padding_10"
+    >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/small_margin"
+            android:paddingEnd="@dimen/small_margin"
+            android:paddingTop="@dimen/small_margin"
+            android:background="@drawable/custom_border_gray"
+            >
+
+            <ImageView
+                android:id="@+id/image_Album"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:scaleType="centerInside"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/drawingName"
+                android:layout_width="wrap_content"
+                android:maxWidth="500dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_margin"
+                android:gravity="start"
+                android:textSize="@dimen/h4"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image_Album"/>
+
+            <TextView
+                android:id="@+id/ownerName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_margin"
+                android:gravity="start"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                android:textSize="@dimen/h5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/drawingName"
+                />
+
+
+<!--            <ImageView-->
+<!--                android:id="@+id/viewer"-->
+<!--                android:layout_width="60dp"-->
+<!--                android:layout_height="60dp"-->
+<!--                app:layout_constraintEnd_toStartOf="@id/delete"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/image_Album"-->
+<!--                app:srcCompat="@drawable/ic_viewer_foreground"-->
+<!--                app:visibility="@{!isPublic &amp;&amp; !viewModel.exposed &amp;&amp; !isViewer ? View.VISIBLE : View.GONE}"-->
+<!--                tools:ignore="SpeakableTextPresentCheck" />-->
+
+
+            <ImageView
+                android:id="@+id/locker"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/creationDate"
+                app:layout_constraintEnd_toStartOf="@+id/numberPeople"
+                app:srcCompat="@drawable/ic_locked_foreground"
+                />
+
+            <ImageView
+                android:id="@+id/imagePeople"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ownerName"
+                app:srcCompat="@drawable/ic_people_foreground"
+                />
+
+            <TextView
+                android:id="@+id/numberPeople"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:gravity="end"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imagePeople"
+                />
+
+            <TextView
+                android:id="@+id/creationDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:gravity="start"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                android:textSize="15sp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

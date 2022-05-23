@@ -1,0 +1,16 @@
+<div class="outside" #content>
+    <div class="container" #container (mousedown)="$event.stopPropagation()">
+        <header class="unselectable">
+            <div class="chat">
+                <h1>{{ chatHandler.isInChat ? "chat" : "canaux"}}</h1>
+                <button *ngIf="chatHandler.canOpenExternalWindow" mat-icon-button #maximise
+                    [matTooltip]="'mode fenêtré'" (click)="chatHandler.toggleChatExternalWindow()">
+                    <i class="fas fa-solid fa-window-restore"></i> </button>
+            </div>
+        </header>
+        <footer>
+            <app-chat-display *ngIf="chatHandler.isInChat"></app-chat-display>
+            <app-canaux-display *ngIf="!chatHandler.isInChat"></app-canaux-display>
+        </footer>
+    </div>
+</div>

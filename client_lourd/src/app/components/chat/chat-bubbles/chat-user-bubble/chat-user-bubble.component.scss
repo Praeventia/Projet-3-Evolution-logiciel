@@ -1,0 +1,34 @@
+section {
+    width: fit-content;
+    margin: 4px;
+
+    padding: 4px;
+    background-color: rgb(249, 236, 255);
+    border-radius: 8px;
+}
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+}
+
+footer {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    word-break: break-word;
+
+    width: 100%;
+}
+
+.username {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.timestamp {
+    font-size: 0.7em;
+    min-width: fit-content;
+}

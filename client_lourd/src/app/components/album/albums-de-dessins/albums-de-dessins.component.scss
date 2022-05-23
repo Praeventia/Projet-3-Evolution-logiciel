@@ -1,0 +1,82 @@
+section {
+    display: flex;
+    flex-direction: column;
+    background-color: #ececec;
+    min-height: 100%;
+    height: max-content;
+    section {
+        header {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: center;
+
+            width: 100%;
+
+            & > div {
+                display: flex;
+                flex-direction: row;
+                & > button {
+                    margin-left: 8px;
+                    width: fit-content;
+                    height: fit-content;
+                    min-width: 40px;
+                    display: flex;
+                    align-items: center;
+                    border-radius: 8px;
+                    background-color: white;
+                    padding: 0px 4px;
+                }
+            }
+
+            mat-form-field {
+                width: 500px !important;
+                align-self: center;
+                justify-self: center;
+                margin-bottom: -1.25em;
+            }
+        }
+
+        ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 0;
+            margin: 8px;
+            flex-wrap: wrap;
+
+            li {
+                list-style-type: none;
+                margin-right: 8px;
+                margin-bottom: 8px;
+            }
+        }
+    }
+}
+
+.option {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .description {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+
+        * {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+        }
+    }
+}
+
+::ng-deep.mat-menu-panel {
+    max-width: none !important;
+}

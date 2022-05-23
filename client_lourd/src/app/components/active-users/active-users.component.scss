@@ -1,0 +1,29 @@
+section {
+    width: 100%;
+
+    header {
+        font-weight: 800;
+        font-size: 1.2rem;
+    }
+
+    footer {
+        max-height: 128px;
+        overflow-y: auto;
+        div {
+            display: flex;
+            align-items: center;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-top: 8px;
+            background-color: white;
+            border-radius: 4px;
+            padding: 4px;
+            img {
+                width: 30px;
+                height: 30px;
+                margin-right: 8px;
+                border-radius: 50%;
+            }
+        }
+    }
+}

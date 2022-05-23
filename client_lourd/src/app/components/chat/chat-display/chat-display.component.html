@@ -1,0 +1,43 @@
+<footer>
+    <button class="room" mat-button [matTooltip]="'sélection du canal'" (click)="leave()">
+        <i class="fas fa-solid fa-chevron-left"></i> {{ chatHandler.currentCanal?.name }}
+    </button>
+    <div class="down">
+        <mat-spinner *ngIf="chatService.loadingChat" [diameter]="30"></mat-spinner>
+        <section #bubbles class="bubbles">
+            <div [ngClass]="isUserMessage(message) ? 'user-bubble' : 'others-bubble'" *ngFor="let message of chatService.messages">
+                <app-chat-user-bubble *ngIf="isUserMessage(message)" [message]="message"></app-chat-user-bubble>
+                <app-chat-others-bubble *ngIf="isOtherUserMessage(message)" [message]="message"></app-chat-others-bubble>
+            </div>
+        </section>
+
+        <section class="input">
+            <form>
+                <mat-form-field>
+                    <input
+                        (focus)="onFocus()"
+                        (blur)="onBlur()"
+                        [maxLength]="1024"
+                        autocomplete="off"
+                        matInput
+                        placeholder="✉️ envoyer un message"
+                        name="input"
+                        #input
+                        [(ngModel)]="messageInput"
+                    />
+                </mat-form-field>
+                <button
+                    [disabled]="sendIsDisabled()"
+                    mat-icon-button
+                    class="submit"
+                    color="primary"
+                    type="submit"
+                    [matTooltip]="'envoyer'"
+                    (click)="sendMessage()"
+                >
+                    <i class="fas fa-2x fa-chevron-right"></i>
+                </button>
+            </form>
+        </section>
+    </div>
+</footer>

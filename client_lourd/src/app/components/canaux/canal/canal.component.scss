@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 12px;
+    font-weight: bold;
+    height: 40px;
+
+    & > span {
+        margin-left: 8px;
+    }
+}
+.options {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 8px;
+    & > * {
+        margin-left: 32px;
+    }
+}
+
+.main-button {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.buttons {
+    position: relative;
+    top: -40px;
+    left: 170px;
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: fit-content;
+}
+
+button {
+    width: min-content !important;
+}
+
+.canal {
+    max-height: 40px;
+    height: 40px;
+}

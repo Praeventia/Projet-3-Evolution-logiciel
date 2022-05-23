@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/MainFragment">
+
+    <action
+        android:id="@+id/moveToHome"
+        app:destination="@id/MainFragment" />
+
+    <fragment
+        android:id="@+id/MainFragment"
+        android:name="com.client_leger.colorimage.Home.MainFragment"
+        android:label="@string/main_fragment_label"
+        tools:layout="@layout/fragment_main">
+
+        <action
+            android:id="@+id/action_MainFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment" />
+        <action
+            android:id="@+id/action_MainFragment_to_SignUpFragment"
+            app:destination="@id/SignUpFragment" />
+        <action
+            android:id="@+id/action_MainFragment_to_ProfileFragment"
+            app:destination="@id/ProfileFragment" />
+        <action
+            android:id="@+id/action_MainFragment_to_MainFragment"
+            app:destination="@id/MainFragment" />
+        <action
+            android:id="@+id/action_MainFragment_to_ContestFragment"
+            app:destination="@id/ContestFragment" />
+        <action
+            android:id="@+id/action_MainFragment_to_LeaderboardFragment"
+            app:destination="@id/LeaderboardFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/LoginFragment"
+        android:name="com.client_leger.colorimage.Connection.LoginFragment"
+        android:label="@string/login_fragment_label"
+        tools:layout="@layout/fragment_login">
+
+        <action
+            android:id="@+id/action_LoginFragment_to_MainFragment"
+            app:destination="@id/MainFragment" />
+        <action
+            android:id="@+id/action_LoginFragment_to_SignUpFragment"
+            app:destination="@id/SignUpFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/SignUpFragment"
+        android:name="com.client_leger.colorimage.Connection.SignUpFragment"
+        android:label="@string/signin_fragment_label"
+        tools:layout="@layout/fragment_login">
+
+        <action
+            android:id="@+id/action_SignUpFragment_to_MainFragment"
+            app:destination="@id/MainFragment" />
+        <action
+            android:id="@+id/action_SignUpFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment" />
+        <action
+            android:id="@+id/action_SignUpFragment_to_SignUpFragment"
+            app:destination="@id/SignUpFragment" />
+        <action
+            android:id="@+id/action_SignUpFragment_to_AvatarGalleryFragment"
+            app:destination="@id/AvatarGalleryFragment" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/ProfileFragment"
+        android:name="com.client_leger.colorimage.Profile.ProfileFragment"
+        android:label="@string/profile_fragment_label"
+        tools:layout="@layout/fragment_profile">
+
+        <action
+            android:id="@+id/action_ProfileFragment_to_MainFragment"
+            app:destination="@id/MainFragment" />
+        <action
+            android:id="@+id/action_ProfileFragment_to_EditProfileFragment"
+            app:destination="@id/EditUsernameFragment" />
+        <action
+            android:id="@+id/action_ProfileFragment_to_AvatarGalleryFragment"
+            app:destination="@id/AvatarGalleryFragment" />
+
+        <action
+            android:id="@+id/action_ProfileFragment_to_ProfileFragment"
+            app:destination="@id/ProfileFragment" />
+
+    </fragment>
+
+    <fragment
+    android:id="@+id/EditUsernameFragment"
+    android:name="com.client_leger.colorimage.Profile.EditUsernameFragment"
+    android:label="@string/edit_profile_fragment_label"
+    tools:layout="@layout/fragment_edit_username">
+
+    <action
+        android:id="@+id/action_EditUsernameFragment_to_ProfileFragment"
+        app:destination="@id/ProfileFragment" />
+    <action
+        android:id="@+id/action_EditUsernameFragment_to_MainFragment"
+        app:destination="@id/MainFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/AvatarGalleryFragment"
+        android:name="com.client_leger.colorimage.Avatar.AvatarGalleryFragment"
+        android:label="@string/avatar_gallery_fragment_label"
+        tools:layout="@layout/fragment_avatar_gallery">
+
+        <action
+            android:id="@+id/action_AvatarGalleryFragment_to_ProfileFragment"
+            app:destination="@id/ProfileFragment" />
+        <action
+            android:id="@+id/action_AvatarGalleryFragment_to_SignUpFragment"
+            app:destination="@id/SignUpFragment" />
+        <action
+            android:id="@+id/action_AvatarGalleryFragment_to_MainFragment"
+            app:destination="@id/MainFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/LoginHistoryFragment"
+        android:name="com.client_leger.colorimage.Profile.ConnectionHistory.ConnectionHistoryFragment"
+        android:label="@string/login_history_fragment"
+        tools:layout="@layout/fragment_connection_history">
+
+
+        <action
+            android:id="@+id/action_LoginHistoryFragment_to_MainFragment"
+            app:destination="@id/MainFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ContestFragment"
+        android:name="com.client_leger.colorimage.Contest.CurrentContest.ContestFragment"
+        android:label="@string/contest_fragment"
+        tools:layout="@layout/fragment_contest">
+
+        <action
+            android:id="@+id/action_ContestFragment_to_MainFragment"
+            app:destination="@id/MainFragment" />
+        <action
+            android:id="@+id/action_ContestFragment_to_ContestVoteFragment"
+            app:destination="@id/ContestVoteFragment" />
+        <action
+            android:id="@+id/action_ContestFragment_to_SubmitContestDrawingFragment"
+            app:destination="@id/SubmitContestDrawingFragment" />
+        <action
+            android:id="@+id/action_ContestFragment_to_ParticipateContestFragment"
+            app:destination="@id/ParticipateContestFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ContestVoteFragment"
+        android:name="com.client_leger.colorimage.Contest.ContestVote.ContestVoteFragment"
+        android:label="@string/contest_vote_fragment"
+        tools:layout="@layout/fragment_contest_vote">
+
+        <action
+            android:id="@+id/action_ContestVoteFragment_to_ContestFragment"
+            app:destination="@id/ContestFragment" />
+        <action
+            android:id="@+id/action_ContestVoteFragment_self"
+            app:destination="@id/ContestVoteFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/LeaderboardFragment"
+        android:name="com.client_leger.colorimage.Leaderboard.LeaderboardFragment"
+        android:label="@string/leaderboard_fragment"
+        tools:layout="@layout/fragment_leaderboard">
+
+
+        <action
+            android:id="@+id/action_LeaderboardFragment_to_MainFragment"
+            app:destination="@id/MainFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/SubmitContestDrawingFragment"
+        android:name="com.client_leger.colorimage.Contest.SubmitDrawing.SubmitContestDrawingFragment"
+        android:label="@string/submit_contest_drawing_fragment"
+        tools:layout="@layout/fragment_submit_contest_drawing">
+
+        <action
+            android:id="@+id/action_SubmitContestDrawingFragment_to_ContestFragment"
+            app:destination="@id/ContestFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ParticipateContestFragment"
+        android:name="com.client_leger.colorimage.Contest.Participate.ParticipateContestFragment"
+        android:label="@string/submit_contest_drawing_fragment"
+        tools:layout="@layout/fragment_contest_participate">
+
+        <action
+            android:id="@+id/action_ParticipateContestFragment_to_ContestFragment"
+            app:destination="@id/ContestFragment" />
+        <action
+            android:id="@+id/action_ParticipateContestFragment_self"
+            app:destination="@id/ParticipateContestFragment" />
+    </fragment>
+
+
+
+</navigation>

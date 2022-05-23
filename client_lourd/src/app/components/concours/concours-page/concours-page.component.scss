@@ -1,0 +1,102 @@
+section {
+    display: flex;
+    flex-direction: column;
+    background-color: #ececec;
+    min-height: 100%;
+    height: max-content;
+
+    & > div {
+        align-items: center;
+
+        & > :nth-child(1) {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            button {
+                margin-left: 8px;
+                width: fit-content;
+                height: fit-content;
+                min-width: 40px;
+                display: flex;
+                align-items: center;
+                border-radius: 8px;
+                background-color: white;
+                padding: 0px 4px;
+            }
+        }
+
+        & > :nth-child(2) {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+
+            .participer {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                font-size: large;
+                font-weight: 800;
+                font-size: 1.5em;
+                height: max-content;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 100%;
+                & > button {
+                    margin-left: 8px;
+                    width: fit-content;
+                    height: 100%;
+                    display: flex;
+                    border-radius: 8px;
+                    background-color: white;
+                    padding: 4px 4px;
+                    margin-bottom: 8px;
+                    margin-top: 8px;
+                }
+            }
+
+            .leaderboard {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                font-size: large;
+                font-weight: 800;
+                font-size: 1.5em;
+                height: max-content;
+                position: absolute;
+                top: 75%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 100%;
+                & > button {
+                    margin-left: 8px;
+                    width: fit-content;
+                    height: 100%;
+                    display: flex;
+                    border-radius: 8px;
+                    background-color: white;
+                    padding: 4px 4px;
+                    margin-bottom: 8px;
+                    margin-top: 8px;
+                }
+            }
+        }
+
+        & > :nth-child(3) {
+            & > div {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        app-concours-week {
+            margin-top: 8px;
+            margin-bottom: 8px;
+            margin-left: 8px;
+            margin-bottom: 500px;
+        }
+    }
+}

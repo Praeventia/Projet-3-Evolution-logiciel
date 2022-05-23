@@ -1,0 +1,99 @@
+<section (click)="drawingsService.view(drawing)">
+    <div>
+        <img [src]="drawing?.url" alt="image placeholder" />
+    </div>
+
+    <div>
+        <h1>
+            <img *ngIf="drawing.isExposed && !drawing.joined" class="icons8" src="https://img.icons8.com/fluency/48/000000/picture.png" />
+
+            <img *ngIf="drawing.joined" class="icons8" src="https://img.icons8.com/fluency/96/000000/edit.png" />
+            <span>{{ drawing.name }}</span>
+        </h1>
+
+        <div>
+            <i *ngIf="!drawing.isPublic && drawing.isExposed" [matTooltip]="'dessin exposé'" class="fa-solid fa-eye exposé"></i>
+            <img
+                *ngIf="concoursService.canPublishToConcours && drawing.contributed"
+                [matTooltip]="'soumettre au concours'"
+                (click)="concoursService.upload($event, drawing)"
+                class="icons8 larger"
+                [src]="'@app/../assets/icons8-heart-48.png'"
+                routerLink="/entries"
+            />
+
+            <i
+                *ngIf="(drawing.isOwner || !drawing.isPasswordProtected) && drawing.joined"
+                [matMenuTriggerFor]="menu"
+                [matTooltip]="'paramètres'"
+                class="fa-solid fa-gear"
+                (click)="$event.stopPropagation()"
+            ></i>
+            <i *ngIf="drawing.isPasswordProtected" [matTooltip]="'dessin protégé'" class="fa-solid fa-lock"></i>
+        </div>
+    </div>
+    <div>
+        <span>
+            <h2>{{ drawing.ownerName }}</h2>
+            <h3>{{ drawing.creationDate | date: 'mediumDate' }}</h3>
+        </span>
+
+        <div *ngIf="drawing.connectedUsers" [matTooltip]="drawing.connectedUsers.length + ' éditeurs'">
+            <i class="fa-solid fa-user-group"></i>
+            <span>{{ drawing.connectedUsers.length }}</span>
+        </div>
+    </div>
+
+    <mat-menu #menu="matMenu">
+        <button
+            class="menu-item"
+            mat-menu-item
+            *ngIf="concoursService.canPublishToConcours && drawing.contributed"
+            [matTooltip]="'soumettre au concours'"
+            (click)="concoursService.upload($event, drawing)"
+        >
+            <img class="icons8" [src]="'@app/../assets/icons8-heart-48.png'" />
+            <span>soumettre au concours</span>
+        </button>
+        <button
+            class="menu-item"
+            mat-menu-item
+            *ngIf="!drawing.isPublic && !drawing.isExposed && drawing.joined"
+            [matTooltip]="'ajouter à l\'exposition'"
+            (click)="drawingsService.toggleExposition($event, drawing)"
+        >
+            <i class="fa-solid fa-eye"></i>
+            <span>ajouter à l'exposition</span>
+        </button>
+
+        <button
+            class="menu-item"
+            mat-menu-item
+            *ngIf="!drawing.isPublic && drawing.isExposed && drawing.joined"
+            [matTooltip]="'retirer de l\'exposition'"
+            (click)="drawingsService.toggleExposition($event, drawing)"
+        >
+            <i class="fa-solid fa-eye-slash"></i>
+            <span>retirer de l'exposition</span>
+        </button>
+
+        <button class="menu-item" mat-menu-item (click)="drawingsService.downloadGif(drawing)" [matTooltip]="'télécharger de le gif du dessin'">
+            <i class="fa-solid fa-download"></i>
+            <span>télécharger le gif</span>
+        </button>
+        <button *ngIf="drawing.isOwner" class="menu-item" mat-menu-item (click)="editorService.edit(drawing)" [matTooltip]="'paramètres de l\'album'">
+            <i class="fa-solid fa-pen"></i>
+            <span>paramètres</span>
+        </button>
+        <button
+            *ngIf="drawing.isOwner"
+            class="menu-item"
+            mat-menu-item
+            [matTooltip]="'supprimer l\'album'"
+            (click)="drawingsService.delete(drawing, false)"
+        >
+            <i class="fa-solid fa-trash"></i>
+            <span>supprimer</span>
+        </button>
+    </mat-menu>
+</section>

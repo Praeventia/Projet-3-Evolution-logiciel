@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/infos"
+        android:layout_width="320dp"
+        android:layout_height="80dp"
+        android:background="@drawable/tool_bar_background"
+        android:clickable="true"
+        android:gravity="start"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@id/tools"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:id="@+id/drawingLayers"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="@dimen/small_margin"
+            android:background="@drawable/button_on"
+            android:padding="@dimen/padding_10"
+            android:src="@drawable/layers"
+            app:backgroundTint="@null"/>
+
+        <ImageView
+            android:id="@+id/people"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="@dimen/small_margin"
+            android:background="@drawable/button_border"
+            android:padding="@dimen/padding_10"
+            app:backgroundTint="@null"
+            android:src="@drawable/users"/>
+
+        <LinearLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/small_margin"
+            android:background="@drawable/button_border"
+            android:gravity="center"
+            >
+            <include layout="@layout/chat_icon_layout"
+                android:id="@+id/chat_info" />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/LayoutDrawingLayers"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:clickable="true"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/infos">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/tool_bar_background"
+            >
+
+            <LinearLayout
+                android:id="@+id/buttonsLayers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/tool_bar_background"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginBottom="@dimen/small_margin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="SpeakableTextPresentCheck">
+
+                <ImageView
+                    android:id="@+id/MoveToBottom"
+                    android:layout_width="@dimen/icon_xl"
+                    android:layout_height="@dimen/icon_xl"
+                    android:layout_weight="1"
+                    android:background="@drawable/border"
+                    android:backgroundTint="@null"
+                    android:padding="8dp"
+                    android:layout_marginEnd="@dimen/margin_20"
+                    app:srcCompat="@drawable/double_down" />
+
+                <ImageView
+                    android:id="@+id/MoveDown"
+                    android:layout_width="@dimen/icon_xl"
+                    android:layout_height="@dimen/icon_xl"
+                    android:layout_weight="1"
+                    android:background="@drawable/border"
+                    android:backgroundTint="@null"
+                    android:padding="8dp"
+                    android:layout_marginEnd="@dimen/margin_20"
+                    app:srcCompat="@drawable/down" />
+
+                <ImageView
+                    android:id="@+id/MoveUp"
+                    android:layout_width="@dimen/icon_xl"
+                    android:layout_height="@dimen/icon_xl"
+                    android:layout_weight="1"
+                    android:background="@drawable/border"
+                    android:backgroundTint="@null"
+                    android:padding="8dp"
+                    android:layout_marginEnd="@dimen/margin_20"
+                    app:srcCompat="@drawable/up" />
+
+                <ImageView
+                    android:id="@+id/MoveToTop"
+                    android:layout_width="@dimen/icon_xl"
+                    android:layout_height="@dimen/icon_xl"
+                    android:layout_weight="1"
+                    android:background="@drawable/border"
+                    android:backgroundTint="@null"
+                    android:padding="8dp"
+                    app:srcCompat="@drawable/double_up" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/layers"
+                android:layout_width="320dp"
+                android:layout_height="0dp"
+                android:background="@drawable/tool_bar_background"
+                android:visibility="visible"
+                android:layout_marginTop="@dimen/small_margin"
+                android:paddingTop="@dimen/padding_10"
+                android:paddingBottom="@dimen/padding_10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/buttonsLayers"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/buttonsLayers"
+                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                tools:listitem="@layout/list_item_layer" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/LayoutPeople"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:clickable="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/infos">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/peopleRecycleView"
+            android:layout_width="320dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/tool_bar_background"
+            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/infos"
+            tools:listitem="@layout/list_user_in_drawing" />
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:id="@+id/tools"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:background="@drawable/tool_bar_background"
+        android:clickable="true"
+        android:gravity="start"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/infos"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/pen"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="@dimen/small_margin"
+            android:background="@drawable/button_border"
+            android:padding="@dimen/padding_10"
+            app:backgroundTint="@null"
+            android:src="@drawable/pencil"/>
+
+        <ImageView
+            android:id="@+id/rect"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="@dimen/small_margin"
+            android:background="@drawable/button_border"
+            android:padding="@dimen/padding_10"
+            android:src="@drawable/rectangle_drawing"
+            app:backgroundTint="@null" />
+
+        <ImageView
+            android:id="@+id/ellipse"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="@dimen/small_margin"
+            android:background="@drawable/button_border"
+            android:padding="@dimen/padding_10"
+            android:src="@drawable/ellipse_drawing"
+            app:backgroundTint="@null" />
+
+        <ImageView
+            android:id="@+id/selection"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="@dimen/small_margin"
+            android:background="@drawable/button_border"
+            android:padding="@dimen/padding_10"
+            android:src="@drawable/check_drawing"
+            app:backgroundTint="@null" />
+
+        <ImageView
+            android:id="@+id/text"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/small_margin"
+            android:background="@drawable/button_border"
+            android:padding="@dimen/padding_10"
+            android:src="@drawable/text_drawing"
+            app:backgroundTint="@null" />
+
+        <ImageView
+            android:id="@+id/delete"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="@dimen/small_margin"
+            android:background="@drawable/button_border"
+            android:padding="@dimen/padding_10"
+            android:src="@drawable/delete"
+            app:backgroundTint="@null" />
+
+        <View
+            android:id="@+id/pickedColor1"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/small_margin"
+            android:background="@drawable/button_border_color"
+            android:backgroundTint="@color/black" />
+
+        <View
+            android:id="@+id/pickedColor2"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/small_margin"
+            android:background="@drawable/button_border_color"
+            android:backgroundTint="@color/white"
+            android:visibility="visible" />
+
+        <View
+            android:id="@+id/pickedColor3"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/small_margin"
+            android:background="@drawable/button_border_color"
+            android:backgroundTint="@color/white"
+            android:visibility="visible" />
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="140dp"
+            android:layout_height="48dp"
+            android:layout_margin="@dimen/small_margin"
+            android:text="@string/fond"
+            android:visibility="visible" />
+
+        <SeekBar
+            android:id="@+id/seekbar_width"
+            android:layout_width="286dp"
+            android:layout_height="match_parent"
+            android:max="40"
+            android:min="1"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:progress="3" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/dot_up_right"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:visibility="gone"
+        app:srcCompat="@drawable/dot"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/dot_up_left"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:visibility="gone"
+        app:srcCompat="@drawable/dot"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/dot_down_right"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:visibility="gone"
+        app:srcCompat="@drawable/dot"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/dot_down_left"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:visibility="gone"
+        app:srcCompat="@drawable/dot"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

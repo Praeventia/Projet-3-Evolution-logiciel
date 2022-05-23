@@ -1,0 +1,53 @@
+<div class="container">
+    <h1 mat-dialog-title>nouveau dessin</h1>
+    <section>
+        <div id="saving-options">
+            <form>
+                <mat-form-field>
+                    <mat-label>nom du dessin</mat-label>
+                    <input matInput (change)="resetErrors()" [formControl]="titleFormControl" [maxlength]="MAX_TITLE_SIZE" autocomplete="off" />
+                    <mat-error
+                        *ngIf="
+                            titleFormControl.hasError('pattern') && !titleFormControl.hasError('required') && !titleFormControl.hasError('conflict')
+                        "
+                    >
+                        veuillez n'utiliser que des lettres, chiffres, des '_', des '-' ou des espaces
+                    </mat-error>
+                    <mat-error
+                        *ngIf="
+                            titleFormControl.hasError('maxlength') && !titleFormControl.hasError('required') && !titleFormControl.hasError('conflict')
+                        "
+                    >
+                        25 caractères maximum
+                    </mat-error>
+
+                    <mat-error *ngIf="titleFormControl.hasError('required') && !titleFormControl.hasError('conflict')">
+                        le nom du dessin est <strong>obligatoire</strong>
+                    </mat-error>
+                    <mat-error *ngIf="titleFormControl.hasError('conflict')"> il existe déjà un dessin avec ce nom</mat-error>
+                </mat-form-field>
+                <div *ngIf="data.album.isPublic">
+                    <br />
+
+                    <mat-slide-toggle [formControl]="enablePassword">protéger le dessin</mat-slide-toggle>
+                    <mat-form-field *ngIf="enablePassword.value">
+                        <mat-label>mot de passe</mat-label>
+                        <input matInput [formControl]="passwordFormControl" [maxlength]="MAX_TITLE_SIZE" autocomplete="off" type="password" />
+                        <mat-error *ngIf="passwordFormControl.hasError('maxlength')"> 25 caractères maximum </mat-error>
+                    </mat-form-field>
+                </div>
+            </form>
+        </div>
+    </section>
+    <mat-dialog-actions>
+        <button mat-button [mat-dialog-close]="undefined">annuler</button>
+        <button
+            mat-button
+            (click)="tryCreate()"
+            color="primary"
+            [disabled]="titleFormControl.invalid || (enablePassword.value == true && passwordFormControl.invalid)"
+        >
+            ok
+        </button>
+    </mat-dialog-actions>
+</div>

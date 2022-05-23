@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Connection.LoginFragment">
+
+    <LinearLayout
+        android:id="@+id/button_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center_vertical|center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include
+            android:id="@+id/logo"
+            layout="@layout/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/in_between_margin"
+            app:layout_constraintBottom_toTopOf="@id/button_wrapper"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/in_between_margin"
+            android:text="@string/login"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textFontWeight="900"
+            android:textSize="@dimen/button_text" />
+
+        <TextView
+            android:id="@+id/error_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/h5"
+            android:textAllCaps="true"
+            android:textColor="@color/red"
+            android:textFontWeight="900"
+            android:layout_marginBottom="@dimen/small_margin"
+            />
+
+        <LinearLayout
+            android:layout_width="@dimen/login_width"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="@dimen/label_login_width"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/small_margin"
+                android:text="@string/email"
+                android:textAlignment="textEnd"
+                android:layout_gravity="center_vertical|end"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textFontWeight="900"
+                android:textSize="@dimen/default_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_email"
+                    android:layout_width="@dimen/input_login_width"
+                    android:layout_height="50dp"
+                    android:backgroundTint="@color/transparent"
+                    android:layout_marginStart="@dimen/small_margin"
+                    android:padding="0dp"
+                    android:textSize="@dimen/default_text"
+                    android:inputType="textEmailAddress"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/login_width"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="@dimen/label_login_width"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/small_margin"
+                android:text="@string/password"
+                android:textAlignment="textEnd"
+                android:layout_gravity="center_vertical|end"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textFontWeight="900"
+                android:textSize="@dimen/default_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                app:endIconDrawable="@drawable/password_toogle"
+                android:padding="0dp"
+                app:endIconMode="password_toggle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_password"
+                    style="@style/Theme.ColorImage"
+                    android:layout_width="@dimen/input_login_width"
+                    android:layout_height="50dp"
+                    android:backgroundTint="@color/transparent"
+                    android:layout_marginStart="@dimen/small_margin"
+                    android:textSize="@dimen/default_text"
+                    android:padding="0dp"
+                    android:inputType="textPassword"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/submit_form"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/in_between_margin"
+            android:background="@drawable/button"
+            android:text="@string/submit"
+            app:backgroundTint="@color/blue" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/small_margin"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:id="@+id/home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/icon"
+                android:layout_height="@dimen/icon"
+                android:contentDescription="@string/login"
+                android:src="@drawable/home"
+                android:layout_marginEnd="@dimen/small_margin"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/home"
+                android:textSize="@dimen/default_text" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/division_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginRight="@dimen/small_margin"
+            android:text="@string/vertical_bar"
+            android:textSize="@dimen/default_text" />
+
+        <TextView
+            android:id="@+id/signin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/signin"
+            android:textSize="@dimen/default_text" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

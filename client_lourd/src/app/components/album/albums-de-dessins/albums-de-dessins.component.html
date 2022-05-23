@@ -1,0 +1,70 @@
+<section>
+    <app-topbar [pageTitle]="' albums de dessins'" [pageUrl]="'https://img.icons8.com/fluency/96/000000/books.png'"></app-topbar>
+    <mat-spinner [diameter]="100" class="center-spinner" *ngIf="albumService.isLoadingAlbums"></mat-spinner>
+    <section class="page" *ngIf="!albumService.isLoadingAlbums">
+        <header>
+            <div>
+                <button mat-button matTooltipClass="tooltip" [matTooltip]="'nouvel album'" (click)="createDialog()">
+                    <i class="fa-solid fa fa-circle-plus"></i>
+                    nouvel album
+                </button>
+            </div>
+
+            <mat-form-field>
+                <input
+                    type="text"
+                    (focus)="onFocus()"
+                    (blur)="onBlur()"
+                    matInput
+                    placeholder="🔍 rechercher un album existant"
+                    #input
+                    [matAutocomplete]="auto"
+                />
+                <mat-autocomplete #auto="matAutocomplete" disableRipple>
+                    <mat-option *ngFor="let album of filterAlbums(input.value)" [value]="album.name">
+                        <div class="option">
+                            <div>{{ album.name }}</div>
+                            <div class="description">
+                                <button
+                                    mat-icon-button
+                                    *ngIf="album.hasExpositions && !album.joined"
+                                    [matTooltip]="'voir l\'exposition'"
+                                    (click)="albumService.view(album)"
+                                >
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+
+                                <button mat-icon-button *ngIf="!album.joined" [matTooltip]="'joindre'" (click)="albumService.join(album)">
+                                    <i class="fa-solid fa-right-to-bracket"></i>
+                                </button>
+                                <button
+                                    mat-icon-button
+                                    *ngIf="album.joined && !album.isOwner && !album.isPublic"
+                                    [matTooltip]="'quitter'"
+                                    (click)="albumService.leave(album)"
+                                >
+                                    <i class="fa-solid fa-right-from-bracket"></i>
+                                </button>
+                                <button mat-icon-button *ngIf="album.joined" [matTooltip]="'aller vers l\'album'" (click)="albumService.view(album)">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </header>
+        <ul>
+            <li *ngFor="let album of albumService.joinedAlbums">
+                <app-album [album]="album"></app-album>
+            </li>
+        </ul>
+        <app-chat
+            *ngIf="chatHandlerService.chatVisible && socketService.chatConnected && !chatHandlerService.chatInExternalWindow"
+            cdkDragBoundary=".page"
+            class="app-chat"
+            cdkDrag
+        >
+        </app-chat>
+    </section>
+</section>

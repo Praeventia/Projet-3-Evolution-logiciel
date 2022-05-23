@@ -1,0 +1,37 @@
+<div class="properties-container unselectable">
+    <section
+        *ngIf="
+            !drawingsService.getDrawingByPath().isPasswordProtected ||
+            drawingsService.getDrawingByPath().canEdit ||
+            drawingsService.getDrawingByPath().isOwner
+        "
+    >
+        <app-active-users></app-active-users>
+    </section>
+    <section
+        *ngIf="
+            !drawingsService.getDrawingByPath().isPasswordProtected ||
+            drawingsService.getDrawingByPath().canEdit ||
+            drawingsService.getDrawingByPath().isOwner
+        "
+    >
+        <app-layers-list></app-layers-list>
+    </section>
+    <section>
+        <header>taille</header>
+        <div class="flex-row align-center">
+            <mat-slider
+                (input)="onSizeChanged($event.value)"
+                [min]="minSliderSize"
+                [max]="maxSliderSize"
+                step="1"
+                [value]="currentToolSize"
+            ></mat-slider>
+            <h3>{{ currentToolSize }}</h3>
+        </div>
+    </section>
+    <section *ngIf="this.showColorProp">
+        <header>couleur</header>
+        <app-color></app-color>
+    </section>
+</div>

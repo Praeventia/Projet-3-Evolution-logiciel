@@ -1,0 +1,16 @@
+<section>
+    <app-topbar [pageTitle]="'leaderboard'" [pageUrl]="'https://img.icons8.com/fluency/96/000000/trophy.png'"></app-topbar>
+    <mat-spinner [diameter]="100" class="center-spinner" *ngIf="leaderboardService.leaderboardIsLoading"></mat-spinner>
+    <div *ngIf="!leaderboardService.leaderboardIsLoading" class="page">
+        <div *ngFor="let leaderboard of leaderboardService.leaderboards">
+            <app-leaderboard [leaderboard]="leaderboard"></app-leaderboard>
+        </div>
+        <app-chat
+            *ngIf="chatHandlerService.chatVisible && socketService.chatConnected && !chatHandlerService.chatInExternalWindow"
+            cdkDragBoundary=".page"
+            class="app-chat"
+            cdkDrag
+        >
+        </app-chat>
+    </div>
+</section>

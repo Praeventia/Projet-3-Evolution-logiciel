@@ -1,0 +1,55 @@
+<section (click)="albumService.view(album)">
+    <img [src]="album.url" alt="image placeholder" />
+    <div>
+        <h1>
+            <img class="icons8" src="https://img.icons8.com/fluency/48/000000/literature.png" /> <span>{{ album.name }}</span>
+        </h1>
+        <div>
+            <i [matMenuTriggerFor]="menu" [matTooltip]="'paramètres'" class="fa-solid fa-gear" (click)="$event.stopPropagation()"></i>
+            <i
+                *ngIf="album.name !== 'Public' && albumService.requests.get(album._id)?.length"
+                matTooltipClass="tooltip"
+                [matTooltip]="albumService.requests.get(album._id)?.length + ' notifications'"
+                [matBadgeHidden]="!albumService.requests.get(album._id)?.length"
+                matBadge="{{ albumService.requests.get(album._id)?.length }}"
+                matBadgePosition="above after"
+                matBadgeColor="primary"
+                matBadgeOverlap="true"
+                class="fa-solid fa-bell"
+            >
+            </i>
+
+            <i *ngIf="!album.isPublic" [matTooltip]="'album privé'" class="fa-solid fa-lock"></i>
+        </div>
+    </div>
+
+    <mat-menu #menu="matMenu">
+        <button *ngIf="album.isOwner" class="menu-item" mat-menu-item (click)="albumService.edit(album)" [matTooltip]="'paramètres de l\'album'">
+            <i class="fa-solid fa-pen"></i>
+            <span>paramètres</span>
+        </button>
+        <button class="menu-item" mat-menu-item matTooltipClass="tooltip" [matTooltip]="'créer un nouveau dessin'" (click)="create(album)">
+            <i class="fa-solid fa fa-circle-plus"></i>
+            <span>nouveau dessin</span>
+        </button>
+
+        <button
+            class="menu-item"
+            mat-menu-item
+            *ngIf="album.joined && !album.isOwner && !album.isPublic"
+            [matTooltip]="'quitter l\'album'"
+            (click)="albumService.leave(album)"
+        >
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>quitter</span>
+        </button>
+        <button *ngIf="album.isOwner" class="menu-item" mat-menu-item [matTooltip]="'supprimer l\'album'" (click)="albumService.delete(album, false)">
+            <i class="fa-solid fa-trash"></i>
+            <span>supprimer</span>
+        </button>
+    </mat-menu>
+
+    <h2 class="description">
+        {{ album.description }}
+    </h2>
+</section>

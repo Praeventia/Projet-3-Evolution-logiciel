@@ -1,0 +1,42 @@
+<div class="canal">
+    <div class="main-buttons">
+        <div mat-button class="main-button" (click)="canauxService.view(canal?.name)">
+            <div class="container">
+                <span>{{ canal?.name }}</span>
+                <div class="options">
+                    <button class="supprimer" *ngIf="!canal?.main && !canal?.drawing" mat-icon-button>
+                        <i class="fa-solid fa-trash" [matTooltip]="'supprimer'" (click)="canauxService.delete($event, canal?.name)"></i>
+                    </button>
+                    <button class="joindre" *ngIf="!canal?.main && !canal?.drawing" mat-icon-button>
+                        <i
+                            *ngIf="!canal?.joined"
+                            class="fa-solid fa-right-to-bracket"
+                            [matTooltip]="'joindre'"
+                            (click)="canauxService.join(canal?.name)"
+                        ></i>
+                        <i
+                            *ngIf="canal?.joined"
+                            class="fa-solid fa-right-from-bracket"
+                            [matTooltip]="'quitter'"
+                            (click)="canauxService.quit($event, canal.name)"
+                        ></i>
+                    </button>
+                    <i
+                        *ngIf="chatService.getNotifications(canal.name)"
+                        [matTooltip]="chatService.getNotifications(canal.name) + ' notification(s)'"
+                        [matBadgeHidden]="!chatService.getNotifications(canal.name)"
+                        matBadge="{{ chatService.getNotifications(canal.name) }}"
+                        matBadgePosition="after"
+                        matBadgeColor="primary"
+                        matBadgeOverlap="false"
+                        class="fa-solid fa-comment-alt"
+                    >
+                    </i>
+                    <i *ngIf="canal?.main || canal?.drawing" class="fa-solid fa-map-pin"></i>
+
+                    <i class="fa-solid fa-chevron-right" [matTooltip]="'rejoindre'"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

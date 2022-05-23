@@ -1,0 +1,15 @@
+<section>
+    <header>
+        <h1>
+            <img class="icons8" src="https://img.icons8.com/fluency/48/000000/confetti.png" /><span>{{ leaderboard?.leaderboardName }}</span>
+        </h1>
+    </header>
+    <footer>
+        <div>
+            <app-leaderboard-winner *ngIf="leaderboard?.winners[0]" [winner]="leaderboard?.winners[0]" [position]="1"></app-leaderboard-winner>
+            <app-leaderboard-winner *ngIf="leaderboard?.winners[1]" [winner]="leaderboard?.winners[1]" [position]="2"></app-leaderboard-winner>
+            <app-leaderboard-winner *ngIf="leaderboard?.winners[2]" [winner]="leaderboard?.winners[2]" [position]="3"></app-leaderboard-winner>
+        </div>
+    </footer>
+    <br />
+</section>

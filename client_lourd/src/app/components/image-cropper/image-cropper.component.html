@@ -1,0 +1,36 @@
+<div *ngIf="!this.hasImage">
+    <input class="header" type="file" accept="image/png, image/jpeg" (change)="fileChangeEvent($event)"/>
+    <ngx-file-drop 
+        dropZoneLabel="Déposer une image de type .png ou .jpeg" 
+        accept="image/*"
+        (onFileDrop)="dropped($event)"
+    >
+    </ngx-file-drop>
+</div>
+<div class="container">
+    <div *ngIf="this.hasImage" class="sourceImg">
+        <image-cropper class="cropperWindow"
+            [imageChangedEvent]="imageChangedEvent"
+            [maintainAspectRatio]="true"
+            [aspectRatio]="1 / 1"
+            imageBase64="{{this.sourceImageB64}}"
+            format="png"
+            (imageCropped)="imageCropped($event)"
+            (imageLoaded)="setShowSpinner(true)"
+            (cropperReady)="setShowSpinner(false)"
+        ></image-cropper>
+    </div>
+    <div class="spinner" *ngIf="this.showSpinner">
+        <mat-spinner></mat-spinner>
+    </div>
+    <div class="sidebar" *ngIf="croppedImage!=''">
+        <h3 class="preview-title">Appercu de votre avatar:</h3>
+        <div class="preview">
+           <img [src]="croppedImage"/> 
+        </div>
+        <div class="action-buttons">
+            <button mat-button (click)="confirmAvatar()">Accepter</button>
+            <button mat-button (click)="cancelAvatar()">Annuler</button>
+        </div>
+    </div>
+</div>

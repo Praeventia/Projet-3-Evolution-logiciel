@@ -1,0 +1,75 @@
+<div class="container">
+    <h1 mat-dialog-title>paramètres</h1>
+    <section>
+        <div id="saving-options">
+            <form>
+                <mat-form-field>
+                    <mat-label>nom du dessin</mat-label>
+                    <input matInput (change)="resetErrors()" [formControl]="titleFormControl" [maxlength]="MAX_TITLE_SIZE" autocomplete="off" />
+                    <mat-error
+                        *ngIf="
+                            titleFormControl.hasError('pattern') && !titleFormControl.hasError('required') && !titleFormControl.hasError('conflict')
+                        "
+                    >
+                        veuillez n'utiliser que des lettres, chiffres, des '_', des '-' ou des espaces
+                    </mat-error>
+                    <mat-error
+                        *ngIf="
+                            titleFormControl.hasError('maxlength') && !titleFormControl.hasError('required') && !titleFormControl.hasError('conflict')
+                        "
+                    >
+                        25 caractères maximum
+                    </mat-error>
+
+                    <mat-error *ngIf="titleFormControl.hasError('required') && !titleFormControl.hasError('conflict')">
+                        le nom de l'album est <strong>obligatoire</strong>
+                    </mat-error>
+                    <mat-error *ngIf="titleFormControl.hasError('conflict')"> il existe déjà un album avec ce nom</mat-error>
+                </mat-form-field>
+
+                <br />
+
+                <mat-form-field>
+                    <input
+                        type="text"
+                        (focus)="onFocus()"
+                        (blur)="onBlur()"
+                        matInput
+                        placeholder="album"
+                        #input
+                        [matAutocomplete]="auto"
+                        [formControl]="albumFormControl"
+                    />
+                    <mat-error *ngIf="albumFormControl.hasError('invalid')">cet album est invalide</mat-error>
+                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                        <mat-option *ngFor="let album of filterAlbums(input.value)" [value]="album.name">
+                            <div class="option">
+                                <div>{{ album.name }}</div>
+                                <div class="description">
+                                    <i *ngIf="!album.isPublic" [matTooltip]="'album privé'" class="fa-solid fa-lock"></i>
+                                </div>
+                            </div>
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+
+                <div *ngIf="albumFormControl.value === 'Public'">
+                    <br />
+
+                    <mat-slide-toggle [formControl]="enablePassword">protéger le dessin</mat-slide-toggle>
+                    <mat-form-field *ngIf="enablePassword.value">
+                        <mat-label>mot de passe</mat-label>
+                        <input matInput [formControl]="passwordFormControl" [maxlength]="MAX_TITLE_SIZE" autocomplete="off" type="password" />
+                        <mat-error *ngIf="passwordFormControl.hasError('required')">
+                            le mot de passe du dessin est <strong>obligatoire</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </form>
+        </div>
+    </section>
+    <mat-dialog-actions>
+        <button mat-button [mat-dialog-close]="undefined">annuler</button>
+        <button mat-button (click)="tryEdit()" color="primary" [disabled]="titleFormControl.invalid || passwordFormControl.invalid">ok</button>
+    </mat-dialog-actions>
+</div>

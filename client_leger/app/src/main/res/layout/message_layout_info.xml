@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/message_template"
+    android:layout_margin="@dimen/small_margin"
+    app:cardElevation="0dp">
+
+    <LinearLayout
+        android:id="@+id/message_constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="@+id/message_template"
+        app:layout_constraintBottom_toBottomOf="@+id/message_template">
+
+        <TextView
+            android:id="@+id/message_timestamp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/h5" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/small_margin"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/message_template"
+            app:layout_constraintBottom_toBottomOf="@+id/message_template">
+
+            <TextView
+                android:id="@+id/message_sender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/space"
+                android:textSize="@dimen/h5"
+                app:layout_constraintEnd_toStartOf="@+id/message_message"
+                app:layout_constraintStart_toStartOf="@+id/message_constraintLayout"
+                app:layout_constraintTop_toTopOf="@+id/message_constraintLayout" />
+
+            <TextView
+                android:id="@+id/message_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/space"
+                android:textSize="@dimen/h5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/message_username"
+                app:layout_constraintTop_toTopOf="@+id/message_username" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

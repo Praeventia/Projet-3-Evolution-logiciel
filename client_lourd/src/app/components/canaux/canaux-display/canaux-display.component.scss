@@ -1,0 +1,44 @@
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.canaux-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    overflow-y: auto;
+    max-height: 70vh;
+    font-weight: bold;
+}
+
+
+
+.input {
+    width: 100%;
+}
+
+app-canal{
+    height: fit-content;
+    border-radius: 8px;
+    background-color: #ececec;
+    width: 100%;
+    margin: 4px 0px;
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+mat-form-field {
+    width: 100%;
+}

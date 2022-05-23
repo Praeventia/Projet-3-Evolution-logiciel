@@ -1,0 +1,39 @@
+image-cropper {
+    height: 50vh;
+}
+
+.container {
+    display: flex;
+}
+
+.content {
+    height: 100%;
+}
+
+.icon {
+    height: 150px;
+    width: 150px;
+}
+
+.iconButton {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.grid {
+    display: grid;
+    gap: 1px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.list {
+    list-style-type: none; 
+}
+
+.title {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}

@@ -1,0 +1,123 @@
+<section>
+    <app-topbar [pageTitle]="' ' + albumName()" [pageUrl]="'https://img.icons8.com/fluency/96/000000/literature.png'"></app-topbar>
+    <mat-spinner [diameter]="100" class="center-spinner" *ngIf="drawingsService.isLoadingDrawings"></mat-spinner>
+    <section class="page" *ngIf="!drawingsService.isLoadingDrawings">
+        <header>
+            <div>
+                <button
+                    mat-icon-button
+                    *ngIf="albumService.getAlbumByPath()?.isOwner"
+                    (click)="albumService.edit()"
+                    [matTooltip]="'paramètres de l\'album'"
+                >
+                    <i class="fa-solid fa-pen"></i>
+                    paramètres
+                </button>
+                <button
+                    mat-icon-button
+                    *ngIf="albumService.getAlbumByPath()?.isOwner"
+                    [matTooltip]="'supprimer l\'album'"
+                    (click)="albumService.delete(albumService.getAlbumByPath(), true)"
+                >
+                    <i class="fa-solid fa-trash"></i>
+                    supprimer
+                </button>
+
+                <button
+                    *ngIf="albumService.getAlbumByPath() && albumService.getAlbumByPath()?.joined"
+                    mat-icon-button
+                    matTooltipClass="tooltip"
+                    [matTooltip]="'créer un nouveau dessin'"
+                    (click)="create()"
+                >
+                    <i class="fa-solid fa fa-circle-plus"></i>
+                    nouveau dessin
+                </button>
+                <button
+                    mat-icon-button
+                    *ngIf="
+                        albumService.getAlbumByPath() &&
+                        albumService.getAlbumByPath().joined &&
+                        !albumService.getAlbumByPath().isOwner &&
+                        !albumService.getAlbumByPath().isPublic
+                    "
+                    [matTooltip]="'quitter l\'album'"
+                    (click)="albumService.leave(albumService.getAlbumByPath(), true)"
+                >
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    quitter
+                </button>
+
+                <button
+                    *ngIf="
+                        albumService.getAlbumByPath() &&
+                        !albumService.getAlbumByPath()?.isPublic &&
+                        albumService.getAlbumByPath()?.joined &&
+                        albumService.requests.get(albumService.getAlbumByPath()?._id)?.length > 0
+                    "
+                    mat-icon-button
+                    matTooltipClass="tooltip"
+                    [matTooltip]="albumService.numberOfRequests(albumService.getAlbumByPath()) + ' notification(s)'"
+                    [matBadgeHidden]="!albumService.requests.get(albumService.getAlbumByPath()?._id)?.length"
+                    matBadge="{{ albumService.requests.get(albumService.getAlbumByPath()?._id)?.length }}"
+                    matBadgePosition="above after"
+                    matBadgeColor="primary"
+                    matBadgeOverlap="true"
+                    [matMenuTriggerFor]="menu"
+                >
+                    <i class="fa-solid fa-bell"></i>
+                    notifications
+                </button>
+                <mat-menu #menu="matMenu">
+                    <div *ngIf="albumService.getAlbumByPath()">
+                        <div *ngFor="let request of albumService.requests.get(albumService.getAlbumByPath()._id)" mat-menu-item>
+                            <app-album-notification [request]="request"></app-album-notification>
+                        </div>
+                    </div>
+                </mat-menu>
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label>🔍 rechercher un dessin dans l'album</mat-label>
+                    <mat-chip-list #chipList aria-label="selection">
+                        <mat-chip *ngFor="let filter of filterService.filters" (removed)="filterService.removeFilter(filter)">
+                            {{ filter }}
+                            <mat-icon matChipRemove>cancel</mat-icon>
+                        </mat-chip>
+                        <input
+                            placeholder="ajouter un filtre"
+                            #input
+                            type="text"
+                            (focus)="onFocus()"
+                            (blur)="onBlur()"
+                            [(ngModel)]="search"
+                            [matAutocomplete]="auto"
+                            [matChipInputFor]="chipList"
+                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                            (matChipInputTokenEnd)="filterService.addFilter($event)"
+                        />
+                    </mat-chip-list>
+                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                        <mat-option *ngFor="let filter of autoCompleteFilters()" [value]="filter">
+                            {{ filter }}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </div>
+        </header>
+        <footer>
+            <ul>
+                <li *ngFor="let drawing of filteredDrawings">
+                    <app-album-drawing [drawing]="drawing"></app-album-drawing>
+                </li>
+            </ul>
+        </footer>
+        <app-chat
+            *ngIf="chatHandlerService.chatVisible && socketService.chatConnected && !chatHandlerService.chatInExternalWindow"
+            cdkDragBoundary=".page"
+            class="app-chat"
+            cdkDrag
+        >
+        </app-chat>
+    </section>
+</section>

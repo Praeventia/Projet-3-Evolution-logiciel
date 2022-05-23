@@ -1,0 +1,156 @@
+section {
+    display: flex;
+    flex-direction: column;
+    background-color: #ececec;
+    min-height: 100%;
+    height: max-content;
+    & > div {
+        margin: 4px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.main-container {
+    display: flex;
+    flex-direction: column;
+    width: 1024px;
+
+    & > div:nth-of-type(1) {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+}
+
+#history-button {
+    padding: 4px;
+}
+.content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+    width: 100%;
+    max-width: 1008px;
+
+    background-color: white;
+    transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    font-weight: 300;
+    border-radius: 8px;
+    margin: 4px;
+}
+
+h1 {
+    font-size: 1.5em;
+    font-weight: 800;
+    padding: 0;
+    margin: 0;
+}
+
+h2 {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin: 0;
+
+    padding: 0;
+}
+
+h3 {
+    font-size: 1.2em;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+}
+
+.info {
+    display: flex;
+    width: 100%;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    margin: 4px;
+
+    & > div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        & > mat-slide-toggle {
+            margin-left: 16px;
+        }
+    }
+}
+
+.stat {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    width: 100%;
+    margin: 4px;
+    & > span {
+        margin-right: 8px;
+        font-weight: 600;
+    }
+}
+
+.frame {
+    border-radius: 50% !important;
+    width: 200px;
+    height: 200px;
+    border-style: solid;
+    border-width: 4px;
+    margin: 4px;
+    border-bottom-color: rgb(255, 96, 96);
+    border-left-color: rgb(96, 255, 122);
+    border-right-color: rgb(255, 240, 123);
+    border-top-color: rgb(96, 146, 255);
+}
+
+.avatar-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.editPhoto {
+    position: relative;
+    width: 0;
+    height: 0;
+    top: 100px;
+    button {
+        cursor: pointer;
+        background-color: transparent;
+        outline: none;
+        border: none;
+    }
+}
+
+.carousel {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    & > div {
+        margin: 4px;
+    }
+}
+
+.card-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.space-between {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}

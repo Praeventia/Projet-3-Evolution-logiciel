@@ -1,0 +1,7 @@
+<div class="container">
+    <h1 mat-dialog-title>historique de connexions</h1>
+
+    <cdk-virtual-scroll-viewport appendOnly itemSize="50" class="example-viewport">
+        <div *cdkVirtualFor="let item of this.profile.connectionHistory" class="example-item">{{ item.type }}: {{ item.time }}</div>
+    </cdk-virtual-scroll-viewport>
+</div>

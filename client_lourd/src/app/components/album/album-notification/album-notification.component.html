@@ -1,0 +1,15 @@
+<section (click)="$event.stopPropagation()">
+    <div>
+        <strong>{{ request.name }}</strong>
+        aimerait joindre l'album
+    </div>
+
+    <div>
+        <button mat-icon-button [matTooltip]="'refuser'" (click)="albumService.declineRequest(request)">
+            <i class="fa-solid fa-circle-xmark"></i>
+        </button>
+        <button mat-icon-button [matTooltip]="'accepter'" (click)="albumService.acceptRequest(request)">
+            <i class="fa-solid fa-circle-check"></i>
+        </button>
+    </div>
+</section>

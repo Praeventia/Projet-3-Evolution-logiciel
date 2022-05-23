@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Contest.CurrentContest.ContestFragment">
+
+    <LinearLayout
+        android:id="@+id/content_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/margin_30"
+        android:layout_marginEnd="@dimen/margin_30"
+        android:layout_marginBottom="@dimen/margin_20"
+        android:padding="@dimen/margin_20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button_wrapper">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/h1"
+            android:textStyle="bold"
+            android:layout_marginBottom="@dimen/margin_20"
+            android:text="@string/contest"/>
+
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/no_drawing"
+            android:textSize="@dimen/h3"
+            android:visibility="gone"
+            android:background="@drawable/custom_border"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_contest"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/recycler_past_contest"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    tools:listitem="@layout/contest_position"
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_past_contest"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/recycler_contest"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:listitem="@layout/contest_past_position"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/button_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginStart="@dimen/margin_30"
+        android:layout_marginEnd="@dimen/margin_30"
+        android:paddingBottom="@dimen/margin_20"
+        app:layout_constraintTop_toBottomOf="@+id/content_wrapper"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:id="@+id/participate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/button"
+            android:backgroundTint="@color/purple"
+            android:paddingTop="@dimen/padding_20"
+            android:paddingBottom="@dimen/padding_20"
+            android:paddingStart="@dimen/padding_30"
+            android:paddingEnd="@dimen/padding_30"
+            android:layout_marginEnd="@dimen/margin_30"
+            >
+
+            <ImageView
+                android:layout_width="@dimen/icon"
+                android:layout_height="@dimen/icon"
+                android:contentDescription="@string/participate"
+                android:src="@drawable/participate"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/h3"
+                android:textColor="@color/black"
+                android:text="@string/participate"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/my_submissions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/button"
+            android:backgroundTint="@color/red"
+            android:paddingTop="@dimen/padding_20"
+            android:paddingBottom="@dimen/padding_20"
+            android:paddingStart="@dimen/padding_30"
+            android:paddingEnd="@dimen/padding_30"
+            android:layout_marginEnd="@dimen/margin_30"
+            >
+
+            <ImageView
+                android:layout_width="@dimen/icon"
+                android:layout_height="@dimen/icon"
+                android:text="@string/my_submission"
+                android:src="@drawable/pencil"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/h3"
+                android:textColor="@color/black"
+                android:text="@string/my_submission"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/vote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/button"
+            android:backgroundTint="@color/green"
+            android:paddingTop="@dimen/padding_20"
+            android:paddingBottom="@dimen/padding_20"
+            android:paddingStart="@dimen/padding_30"
+            android:paddingEnd="@dimen/padding_30"
+            android:layout_marginEnd="@dimen/margin_30"
+            >
+
+            <ImageView
+                android:layout_width="@dimen/icon"
+                android:layout_height="@dimen/icon"
+                android:text="@string/vote"
+                android:src="@drawable/like_image"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/h3"
+                android:textColor="@color/black"
+                android:text="@string/vote"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <include layout="@layout/chat_icon_layout"
+        android:id="@+id/chat_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_20"
+    >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/custom_border_green"
+        android:padding="@dimen/margin_20">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/contest_week_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="start"
+                android:textSize="@dimen/h2"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginBottom="@dimen/margin_20"/>
+
+            <TextView
+                android:id="@+id/start_date"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="start"
+                android:textSize="@dimen/h2"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/margin_20"
+                android:layout_marginBottom="@dimen/margin_20"
+                android:textAllCaps="true"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:textSize="@dimen/h3"
+                android:textColor="@color/black"
+                android:text="@string/contest_theme"/>
+
+            <TextView
+                android:id="@+id/contest_theme"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="start"
+                android:textSize="@dimen/h3"
+                android:textColor="@color/black"
+                android:layout_marginStart="@dimen/small_margin"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="@dimen/icon_xl"
+                android:layout_height="@dimen/icon_xl"
+                android:contentDescription="@string/second_pos"
+                android:src="@drawable/timer"
+                android:gravity="center_horizontal|center_vertical"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:textSize="@dimen/h3"
+                android:textColor="@color/black"
+                android:text="@string/ended_on"/>
+
+            <TextView
+                android:id="@+id/end_date"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="start|center_vertical"
+                android:textSize="@dimen/h3"
+                android:textColor="@color/black"
+                android:layout_marginStart="@dimen/small_margin"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:paddingBottom="@dimen/small_margin"
+            android:layout_height="300dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/second_place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:orientation="vertical"
+                android:translationY="@dimen/second_pos_align"
+                android:layout_marginEnd="@dimen/margin_20"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="@+id/test"
+                    app:layout_constraintEnd_toEndOf="@+id/test"
+                    app:layout_constraintStart_toStartOf="@+id/test"
+                    app:layout_constraintTop_toTopOf="@+id/test">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/second_content_wrapper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start">
+
+                        <LinearLayout
+                            android:id="@+id/second_image_layout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="@+id/second_content_wrapper"
+                            app:layout_constraintEnd_toEndOf="@+id/second_content_wrapper"
+                            app:layout_constraintStart_toStartOf="@+id/second_content_wrapper"
+                            app:layout_constraintTop_toTopOf="@+id/second_content_wrapper">
+
+                            <ImageView
+                                android:id="@+id/second_drawing"
+                                android:contentDescription="@string/drawing"
+                                android:layout_width="@dimen/contest_image_width"
+                                android:layout_height="@dimen/contest_image_height"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="@+id/second_image_layout"
+                            app:layout_constraintEnd_toEndOf="@+id/second_image_layout">
+
+                            <ImageView
+                                android:layout_width="@dimen/icon_xl"
+                                android:layout_height="@dimen/icon_xl"
+                                android:contentDescription="@string/second_pos"
+                                android:src="@drawable/second_place"
+                                android:gravity="center_horizontal|center_vertical"
+                                />
+
+                        </LinearLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/second_username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/h3"
+                        android:textColor="@color/black"
+                        android:textAllCaps="true"
+                        android:text="@string/username"/>
+
+                    <TextView
+                        android:id="@+id/second_drawing_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/h4"
+                        android:textColor="@color/black"
+                        android:text="Drawing Name"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="@dimen/icon"
+                                android:layout_height="@dimen/icon"
+                                android:src="@drawable/like_image"
+                                />
+
+                            <TextView
+                                android:id="@+id/second_vote"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/small_margin"
+                                android:layout_marginEnd="@dimen/small_margin"
+                                android:textSize="@dimen/h4"
+                                android:textColor="@color/black"/>
+
+                            <ImageView
+                                android:layout_width="@dimen/icon"
+                                android:layout_height="@dimen/icon"
+                                android:src="@drawable/unlike"
+                                />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/first_place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:orientation="vertical"
+                android:layout_marginEnd="@dimen/margin_20"
+                android:layout_marginStart="@dimen/margin_20"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="@+id/test"
+                    app:layout_constraintEnd_toEndOf="@+id/test"
+                    app:layout_constraintStart_toStartOf="@+id/test"
+                    app:layout_constraintTop_toTopOf="@+id/test">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/first_content_wrapper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start">
+
+                        <LinearLayout
+                            android:id="@+id/image_layout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="@+id/first_content_wrapper"
+                            app:layout_constraintEnd_toEndOf="@+id/first_content_wrapper"
+                            app:layout_constraintStart_toStartOf="@+id/first_content_wrapper"
+                            app:layout_constraintTop_toTopOf="@+id/first_content_wrapper">
+
+                            <ImageView
+                                android:id="@+id/first_drawing"
+                                android:contentDescription="@string/drawing"
+                                android:layout_width="@dimen/contest_image_width"
+                                android:layout_height="@dimen/contest_image_height"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="@+id/image_layout"
+                            app:layout_constraintEnd_toEndOf="@+id/image_layout">
+                            <ImageView
+                                android:layout_width="@dimen/icon_xl"
+                                android:layout_height="@dimen/icon_xl"
+                                android:contentDescription="@string/first_pos"
+                                android:src="@drawable/first_place"
+                                android:gravity="center_horizontal|center_vertical"
+                                />
+
+                        </LinearLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/first_username"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/h3"
+                            android:textColor="@color/black"
+                            android:textAllCaps="true"
+                            android:text="@string/username"/>
+
+                        <TextView
+                            android:id="@+id/first_drawing_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/h4"
+                            android:textColor="@color/black"
+                            android:text="Drawing Name"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="@dimen/icon"
+                                android:layout_height="@dimen/icon"
+                                android:src="@drawable/like_image"
+                                />
+
+                            <TextView
+                                android:id="@+id/first_vote"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/small_margin"
+                                android:layout_marginEnd="@dimen/small_margin"
+                                android:textSize="@dimen/h4"
+                                android:textColor="@color/black"/>
+
+                            <ImageView
+                                android:layout_width="@dimen/icon"
+                                android:layout_height="@dimen/icon"
+                                android:src="@drawable/unlike"
+                                />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/third_place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:orientation="vertical"
+                android:translationY="@dimen/third_pos_align"
+                android:layout_marginStart="@dimen/margin_20"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="@+id/test"
+                    app:layout_constraintEnd_toEndOf="@+id/test"
+                    app:layout_constraintStart_toStartOf="@+id/test"
+                    app:layout_constraintTop_toTopOf="@+id/test">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/third_content_wrapper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start">
+
+                        <LinearLayout
+                            android:id="@+id/third_image_layout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="@+id/third_content_wrapper"
+                            app:layout_constraintEnd_toEndOf="@+id/third_content_wrapper"
+                            app:layout_constraintStart_toStartOf="@+id/third_content_wrapper"
+                            app:layout_constraintTop_toTopOf="@+id/third_content_wrapper">
+
+                            <ImageView
+                                android:id="@+id/third_drawing"
+                                android:contentDescription="@string/drawing"
+                                android:layout_width="@dimen/contest_image_width"
+                                android:layout_height="@dimen/contest_image_height"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="@+id/third_image_layout"
+                            app:layout_constraintEnd_toEndOf="@+id/third_image_layout">
+                            <ImageView
+                                android:layout_width="@dimen/icon_xl"
+                                android:layout_height="@dimen/icon_xl"
+                                android:contentDescription="@string/third_pos"
+                                android:src="@drawable/third_place"
+                                android:gravity="center_horizontal|center_vertical"
+                                />
+
+                        </LinearLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/third_username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/h3"
+                        android:textColor="@color/black"
+                        android:textAllCaps="true"
+                        android:text="@string/username"/>
+
+                    <TextView
+                        android:id="@+id/third_drawing_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/h4"
+                        android:textColor="@color/black"
+                        android:text="Drawing Name"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="@dimen/icon"
+                                android:layout_height="@dimen/icon"
+                                android:src="@drawable/like_image"
+                                />
+
+                            <TextView
+                                android:id="@+id/third_vote"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/small_margin"
+                                android:layout_marginEnd="@dimen/small_margin"
+                                android:textSize="@dimen/h4"
+                                android:textColor="@color/black"/>
+
+                            <ImageView
+                                android:layout_width="@dimen/icon"
+                                android:layout_height="@dimen/icon"
+                                android:src="@drawable/unlike"
+                                />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

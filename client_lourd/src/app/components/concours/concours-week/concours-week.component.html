@@ -1,0 +1,17 @@
+<section>
+    <header>
+        <h1>thème du concours: {{ concours?.theme }}</h1>
+        <h2>
+            <img class="icons8" src="https://img.icons8.com/color/48/000000/hourglass-sand-top.png" />
+            {{ concours?.startDate | date: 'd MMMM y à h:mm' }} jusqu'au {{ concours?.endDate | date: 'd MMMM y à h:mm' }}
+        </h2>
+    </header>
+    <footer>
+        <div>
+            <app-winner *ngIf="concours?.winners[0]" [winner]="concours?.winners[0]" [position]="1"></app-winner>
+            <app-winner *ngIf="concours?.winners[1]" [winner]="concours?.winners[1]" [position]="2"></app-winner>
+            <app-winner *ngIf="concours?.winners[2]" [winner]="concours?.winners[2]" [position]="3"></app-winner>
+        </div>
+    </footer>
+    <br />
+</section>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Chat.presentation.ChatActivity"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/small_margin"
+            android:text="Canaux"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.client_leger.colorimage.Chat.presentation.channels.components.AutoCompleteChannelView
+            android:inputType="textVisiblePassword"
+            android:id="@+id/autoCompleteTextView2"
+            android:layout_width="265dp"
+            android:layout_height="46dp"
+            android:layout_margin="@dimen/small_margin"
+            android:hint="🔍 rejoindre un canal existant"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <Button
+            android:id="@+id/create_room_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/small_margin"
+            android:text="Créer un nouveau canal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView2"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <EditText
+            android:id="@+id/create_room_text"
+            android:inputType="text"
+            android:gravity="center_vertical"
+            android:layout_width="263dp"
+            android:layout_height="40dp"
+            android:hint="Entrez un nom de canal"
+            app:layout_constraintLeft_toLeftOf="@id/create_room_button"
+            app:layout_constraintTop_toTopOf="@id/create_room_button"
+            app:layout_constraintBottom_toBottomOf="@id/create_room_button"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/create_room_confirm_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Créer"
+            android:layout_margin="@dimen/small_margin"
+            app:layout_constraintTop_toTopOf="@id/create_room_text"
+            app:layout_constraintBottom_toBottomOf="@id/create_room_text"
+            app:layout_constraintStart_toEndOf="@id/create_room_text"
+            android:visibility="invisible"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/greyLine"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        app:srcCompat="@drawable/grey"
+        tools:ignore="ContentDescription" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/channelListRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_room_layout"
+        android:scrollbars="vertical"/>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

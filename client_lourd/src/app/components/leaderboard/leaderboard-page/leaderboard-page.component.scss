@@ -1,0 +1,14 @@
+section {
+    display: flex;
+    flex-direction: column;
+    background-color: #ececec;
+    min-height: 100%;
+    height: max-content;
+
+    div > div {
+        margin-top: 8px;
+        margin-bottom: 8px;
+        margin-left: 8px;
+        margin-bottom: 500px;
+    }
+}

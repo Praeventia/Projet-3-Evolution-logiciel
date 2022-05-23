@@ -1,0 +1,12 @@
+<div>
+    <img
+        [src]="winner.url ? winner.url : '..\\assets\\image-not-found\\placeholder.png'"
+        alt="image placeholder"
+        (click)="concoursService.view(winner)"
+    />
+    <div>{{ winner.drawingName }}</div>
+    <div><img class="icons8" src="https://img.icons8.com/fluency/48/000000/confetti.png" /> {{ winner.vote }} votes!</div>
+    <span *ngIf="position === 1"><img class="icons8" src="https://img.icons8.com/color/48/000000/medal2--v1.png" /></span>
+    <span *ngIf="position === 2"><img class="icons8" src="https://img.icons8.com/color/48/000000/medal-second-place--v1.png" /></span>
+    <span *ngIf="position === 3"><img class="icons8" src="https://img.icons8.com/color/48/000000/medal2-third-place--v1.png" /></span>
+</div>

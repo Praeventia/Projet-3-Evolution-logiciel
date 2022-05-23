@@ -1,0 +1,12 @@
+<button
+    *ngIf="socketService.chatConnected"
+    mat-button
+    class="menu"
+    matTooltipClass="tooltip"
+    [matTooltip]="'Chat'"
+    matTooltipPosition="right"
+    matTooltipShowDelay="500"
+    (click)="tryOpenChat()"
+>
+    <img class="icons8" src="https://img.icons8.com/fluency/48/000000/speech-bubble-with-dots.png" />
+</button>

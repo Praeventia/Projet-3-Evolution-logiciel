@@ -1,0 +1,43 @@
+<section (click)="concoursService.view(entry)">
+    <img [src]="entry.url ? entry.url : '..\\assets\\image-not-found\\placeholder.png'" alt="image placeholder" />
+
+    <div>
+        <h1><img class="icons8" src="https://img.icons8.com/fluency/48/000000/picture.png" /> {{ entry.drawingName }}</h1>
+        <button mat-icon-button *ngIf="entry.isOwner" [matTooltip]="'supprimer l\'entrée'" (click)="concoursService.delete($event, entry)">
+            <i class="fa-solid fa-trash"></i>
+        </button>
+    </div>
+    <div>
+        <span>
+            <div>
+                <h2>{{ entry.ownerName }}</h2>
+            </div>
+            <div>
+                <h3>{{ entry.creationDate | date: 'mediumDate' }}</h3>
+                <div>
+                    <button
+                        [disabled]="entry.isOwner"
+                        [ngClass]="entry.hasAlreadyUpVoted ? 'upvoted' : ''"
+                        mat-icon-button
+                        (click)="concoursService.toggleUpVote($event, entry)"
+                        [matTooltip]="'voter pour cette entée'"
+                    >
+                        <i class="fa-solid fa-arrow-up"></i>
+                    </button>
+                    <div>
+                        {{ entry.vote }}
+                    </div>
+                    <button
+                        [disabled]="entry.isOwner"
+                        [ngClass]="entry.hasAlreadyDownVoted ? 'downvoted' : ''"
+                        mat-icon-button
+                        (click)="concoursService.toggleDownVote($event, entry)"
+                        [matTooltip]="'voter pour cette entée'"
+                    >
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </button>
+                </div>
+            </div>
+        </span>
+    </div>
+</section>

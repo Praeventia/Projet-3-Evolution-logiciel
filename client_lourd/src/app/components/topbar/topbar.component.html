@@ -1,0 +1,81 @@
+<section>
+    <div class="title">
+        <img *ngIf="pageUrl" class="icons8" [src]="pageUrl" /><span>{{ pageTitle }}</span>
+    </div>
+    <div>
+        <button
+            [disabled]="router.url === '/home'"
+            mat-button
+            class="menu"
+            routerLink="/home"
+            matTooltipClass="tooltip"
+            [matTooltip]="'retour à l\'accueil'"
+            matTooltipPosition="right"
+            matTooltipShowDelay="500"
+        >
+            <img class="icons8" src="https://img.icons8.com/fluency/48/000000/home.png" />
+        </button>
+
+        <button
+            *ngIf="userService.userConnected"
+            [disabled]="router.url === '/albums' || !userService.userConnected"
+            mat-button
+            class="menu"
+            routerLink="/albums"
+            matTooltipClass="tooltip"
+            [matTooltip]="'album de dessins'"
+            matTooltipPosition="right"
+            matTooltipShowDelay="500"
+        >
+            <img class="icons8" src="https://img.icons8.com/fluency/96/000000/books.png" />
+        </button>
+
+        <button
+            *ngIf="userService.userConnected"
+            [disabled]="router.url.includes('/dessins') || !userService.userConnected"
+            mat-button
+            class="menu"
+            routerLink="/dessins"
+            matTooltipClass="tooltip"
+            [matTooltip]="'mes dessins'"
+            matTooltipPosition="right"
+            matTooltipShowDelay="500"
+        >
+            <img class="icons8" src="https://img.icons8.com/fluency/96/000000/edit.png" />
+        </button>
+
+        <button
+            *ngIf="userService.userConnected"
+            [disabled]="router.url === '/concours' || !userService.userConnected"
+            mat-button
+            class="menu"
+            routerLink="/concours"
+            matTooltipClass="tooltip"
+            [matTooltip]="'Concours'"
+            matTooltipPosition="right"
+            matTooltipShowDelay="500"
+        >
+            <img class="icons8" src="https://img.icons8.com/color/48/000000/medal2--v1.png" />
+        </button>
+        <button
+            *ngIf="userService.userConnected"
+            [disabled]="router.url === '/leaderboard' || !userService.userConnected"
+            mat-button
+            class="menu"
+            routerLink="/leaderboard"
+            matTooltipClass="tooltip"
+            [matTooltip]="'Leaderboard'"
+            matTooltipPosition="right"
+            matTooltipShowDelay="500"
+        >
+            <img class="icons8" src="https://img.icons8.com/fluency/48/000000/trophy.png" />
+        </button>
+
+        <app-chat-button></app-chat-button>
+    </div>
+
+    <div>
+        <app-login></app-login>
+    </div>
+</section>
+<div id="topbar-height"></div>

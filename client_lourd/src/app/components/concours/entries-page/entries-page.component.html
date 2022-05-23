@@ -1,0 +1,48 @@
+<section>
+    <app-topbar [pageUrl]="'https://img.icons8.com/color/48/000000/like--v3.png'" [pageTitle]="' dessins du concours'"></app-topbar>
+    <mat-spinner [diameter]="100" class="center-spinner" *ngIf="concoursService.concoursIsLoading"></mat-spinner>
+    <div *ngIf="!concoursService.concoursIsLoading" class="page">
+        <div>
+            <div>
+                <button mat-button routerLink="/submissions">
+                    <img class="icons8" src="https://img.icons8.com/fluency/48/000000/picture.png" /> mes soumissions
+                </button>
+                <button mat-button *ngIf="concoursService.canPublishToConcours" routerLink="/dessins/@contributions">
+                    <img class="icons8" [src]="'@app/../assets/icons8-heart-48.png'" /> participer
+                </button>
+
+                <button mat-button routerLink="/concours">
+                    <img class="icons8" src="https://img.icons8.com/color/48/000000/medal2--v1.png" /> concours
+                </button>
+            </div>
+            <div>
+                <div>thème: {{ concoursService.currentConcours?.theme }}</div>
+                <div>
+                    <i [matTooltip]="'vous pouvez voter pour ' + concoursService.numberOfLikesLeft + ' autres dessins'" class="fa-solid fa-heart">
+                    </i>
+                    <span> ‏‏‎ {{ concoursService.numberOfLikesLeft }} votes restants</span>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div *ngFor="let entry of concoursService.getEntries(false)">
+                <app-entry [entry]="entry"></app-entry>
+            </div>
+            <div class="participer" *ngIf="concoursService.currentConcours?.winners?.length === 0">
+                <div>participez et vôtre dessin apparaitera ici!</div>
+                <button mat-button *ngIf="concoursService.canPublishToConcours" routerLink="/dessins/@contributions">
+                    <img class="icons8" [src]="'@app/../assets/icons8-heart-48.png'" /> participer
+                </button>
+            </div>
+        </div>
+
+        <app-chat
+            *ngIf="chatHandlerService.chatVisible && socketService.chatConnected && !chatHandlerService.chatInExternalWindow"
+            cdkDragBoundary=".page"
+            class="app-chat"
+            cdkDrag
+        >
+        </app-chat>
+    </div>
+</section>

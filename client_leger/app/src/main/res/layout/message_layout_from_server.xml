@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/message_template"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="start"
+    android:layout_margin="2dp"
+    app:cardElevation="0dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/avatar_image"
+            android:layout_width="@dimen/avatar_icon_small"
+            android:layout_height="@dimen/avatar_icon_small"
+            android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="5dp"
+            android:scaleType="centerCrop"
+            app:civ_border_color="@color/blue"
+            app:civ_border_width="@dimen/small_border" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/message_constraintLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:background="@drawable/message_from_server_bubble"
+            android:orientation="vertical"
+            android:paddingHorizontal="8dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="8dp">
+
+
+            <TextView
+                android:id="@+id/message_sender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/small_margin"
+                android:text="username"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/message_constraintLayout"
+                app:layout_constraintTop_toTopOf="@id/message_constraintLayout" />
+
+            <TextView
+                android:id="@+id/message_timestamp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="timestamp"
+                android:textSize="12sp"
+                android:layout_marginStart="10dp"
+                app:layout_constraintStart_toEndOf="@id/message_sender"
+                app:layout_constraintBottom_toBottomOf="@id/message_sender"
+                app:layout_constraintTop_toTopOf="@id/message_sender"/>
+
+            <TextView
+                android:id="@+id/message_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintWidth_max="600dp"
+                android:text="message content lalalala lalalal lalala"
+                android:textSize="15sp"
+                app:layout_constraintTop_toBottomOf="@id/message_sender"
+                app:layout_constraintStart_toStartOf="@id/message_constraintLayout"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

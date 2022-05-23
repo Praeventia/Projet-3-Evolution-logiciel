@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="content">
+        <div class="title">
+            <h3>Choisir parmi les avatars de défaut: </h3>
+            <button 
+                class="iconButton"
+                (click)="openImageCropperDialog()"
+                matTooltipClass="tooltip"
+                [matTooltip]="'Téléverser une image'"
+                matTooltipPosition="left"
+                matTooltipShowDelay="500"
+            >
+                <mat-icon>file_upload</mat-icon>
+            </button>
+        </div>
+        <div class="grid">
+            <li class="list" *ngFor="let avatar of this.avatarService.defaultAvatarsID; let i = index">
+                <button class="iconButton"(click)="this.avatarService.setDefaultAvatar(i)">
+                    <img class="icon" src="{{this.avatarService.defaultAvatarURL + this.avatarService.defaultAvatarsID[i]}}">
+                </button>
+            </li>
+        </div>
+    </div>
+</div>

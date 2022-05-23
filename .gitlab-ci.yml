@@ -1,0 +1,190 @@
+.only-client_lourd: &only-client_lourd
+    image: xwiillz/node-chromium-mongo:lts-bionic
+    only:
+        refs:
+            - main
+            - merge_requests
+        changes:
+            - client_lourd/**/*
+    cache:
+        key: '${CI_COMMIT_REF_SLUG}-client-lourd'
+        paths:
+            - client_lourd/node_modules/
+        policy: pull
+
+.only-server: &only-server
+    image: xwiillz/node-chromium-mongo:lts-bionic
+    only:
+        refs:
+            - main
+            - merge_requests
+        changes:
+            - server/**/*
+    cache:
+        key: '${CI_COMMIT_REF_SLUG}-server'
+        paths:
+            - server/node_modules/
+        policy: pull
+
+.only-client_leger: &only-client_leger
+    image: openjdk:11-jdk
+    variables:
+
+        # ANDROID_COMPILE_SDK is the version of Android you're compiling with.
+        # It should match compileSdkVersion.
+        ANDROID_COMPILE_SDK: "32"
+
+        # ANDROID_BUILD_TOOLS is the version of the Android build tools you are using.
+        # It should match buildToolsVersion.
+        ANDROID_BUILD_TOOLS: "30.0.3"
+
+        # It's what version of the command line tools we're going to download from the official site.
+        # Official Site-> https://developer.android.com/studio/index.html
+        # There, look down below at the cli tools only, sdk tools package is of format:
+        #        commandlinetools-os_type-ANDROID_SDK_TOOLS_latest.zip
+        # when the script was last modified for latest compileSdkVersion, it was which is written down below
+        ANDROID_SDK_TOOLS: "7583922"
+    only:
+        refs:
+            - main
+            - merge_requests
+        changes:
+            - client_leger/**/*
+    before_script:
+        - cd client_leger
+        - apt-get --quiet update --yes
+        - apt-get --quiet install --yes wget tar unzip lib32stdc++6 lib32z1
+
+        # Setup path as ANDROID_SDK_ROOT for moving/exporting the downloaded sdk into it
+        - export ANDROID_SDK_ROOT="${PWD}/android-home"
+        # Create a new directory at specified location
+        - install -d $ANDROID_SDK_ROOT
+        # Here we are installing androidSDK tools from official source,
+        # (the key thing here is the url from where you are downloading these sdk tool for command line, so please do note this url pattern there and here as well)
+        # after that unzipping those tools and
+        # then running a series of SDK manager commands to install necessary android SDK packages that'll allow the app to build
+        - wget --output-document=$ANDROID_SDK_ROOT/cmdline-tools.zip https://dl.google.com/android/repository/commandlinetools-linux-${ANDROID_SDK_TOOLS}_latest.zip
+        # move to the archive at ANDROID_SDK_ROOT
+        - pushd $ANDROID_SDK_ROOT
+        - unzip -d cmdline-tools cmdline-tools.zip
+        - pushd cmdline-tools
+        # since commandline tools version 7583922 the root folder is named "cmdline-tools" so we rename it if necessary
+        - mv cmdline-tools tools || true
+        - popd
+        - popd
+        - export PATH=$PATH:${ANDROID_SDK_ROOT}/cmdline-tools/tools/bin/
+
+        # Nothing fancy here, just checking sdkManager version
+        - sdkmanager --version
+
+        # use yes to accept all licenses
+        - yes | sdkmanager --licenses || true
+        - sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}"
+        - sdkmanager "platform-tools"
+        - sdkmanager "build-tools;${ANDROID_BUILD_TOOLS}"
+
+        # Not necessary, but just for surity
+        - chmod +x ./gradlew
+
+stages:
+    - install
+    - lint
+    - build
+    
+    
+
+install:client_lourd:
+    stage: install
+    <<: *only-client_lourd
+    script:
+        - cd client_lourd
+        - npm ci --cache .npm --prefer-offline
+    cache:
+        key: '${CI_COMMIT_REF_SLUG}-client-lourd'
+        paths:
+            - client_lourd/node_modules/
+            - client_lourd/.npm/
+        policy: pull-push
+
+install:server:
+    stage: install
+    <<: *only-server
+    script:
+        - cd server
+        - npm ci --cache .npm --prefer-offline
+    cache:
+        key: '${CI_COMMIT_REF_SLUG}-server'
+        paths:
+            - server/node_modules/
+            - server/.npm/
+        policy: pull-push
+
+     
+
+lint:client_lourd:
+    stage: lint
+    <<: *only-client_lourd
+    script:
+        - cd client_lourd
+        - npm ci --cache .npm --prefer-offline
+        - npm run lint
+
+lint:server:
+    stage: lint
+    <<: *only-server
+    script:
+        - cd server
+        - npm ci --cache .npm --prefer-offline
+        - npm run lint
+
+lint:client_leger:
+    interruptible: true
+    stage: lint
+    <<: *only-client_leger
+    script:
+        - ./gradlew -Pci --console=plain :app:lintDebug -PbuildDir=lint
+
+build:client_lourd:
+    stage: build
+    <<: *only-client_lourd
+    script:
+        - cd client_lourd
+        - npm ci --cache .npm --prefer-offline
+        - npm run build
+    artifacts:
+        paths:
+            - client_lourd/dist/
+
+build-electron:client_lourd:
+    stage: build
+    <<: *only-client_lourd
+    script:
+        - cd client_lourd
+        - npm ci --cache .npm --prefer-offline
+        - npm run build:electron
+    artifacts:
+        paths:
+            - client_lourd/build/
+
+build:server:
+    stage: build
+    <<: *only-server
+    script:
+        - cd server
+        - npm ci --cache .npm --prefer-offline
+        - npm run build
+    artifacts:
+        paths:
+            - server/dist/
+
+
+build:client_leger:
+    interruptible: true
+    stage: build
+    <<: *only-client_leger
+    script:
+        - ./gradlew assembleDebug
+    artifacts:
+        paths:
+        - client_leger/app/build/outputs/
+

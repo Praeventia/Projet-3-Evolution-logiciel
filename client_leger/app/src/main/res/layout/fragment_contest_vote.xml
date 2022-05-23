@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/padding_20"
+    tools:context=".Contest.ContestVote.ContestVoteFragment">
+
+    <LinearLayout
+        android:id="@+id/content_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <LinearLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="@+id/content_wrapper"
+            app:layout_constraintTop_toTopOf="@+id/content_wrapper">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/contest_vote"
+                android:textSize="@dimen/h1"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:padding="@dimen/padding_10"/>
+
+            <TextView
+                android:id="@+id/start_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/h1"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:padding="@dimen/padding_10"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/votes_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_30"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/contest_available_votes"
+                android:layout_marginEnd="@dimen/small_margin"
+                android:textSize="@dimen/h3"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:padding="@dimen/padding_10"/>
+
+            <TextView
+                android:id="@+id/available_votes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/h3"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:padding="@dimen/padding_10"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@drawable/custom_border_green"
+            android:orientation="horizontal"
+            android:layout_marginStart="@dimen/margin_30"
+            android:layout_marginEnd="@dimen/margin_30"
+            android:layout_marginBottom="@dimen/margin_20"
+            android:padding="@dimen/padding_20"
+            app:layout_constraintEnd_toStartOf="@+id/save_wrapper"
+            app:layout_constraintStart_toStartOf="@+id/header">
+
+
+            <LinearLayout
+                android:id="@+id/message"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/h4"
+                    android:text="@string/no_drawing"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/recycler_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_contest_vote"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:clipToPadding="false"
+                    tools:listitem="@layout/contest_vote">
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

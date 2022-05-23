@@ -1,0 +1,35 @@
+<div class="container unselectable">
+    <app-topbar [pageTitle]="'accueil'" [pageUrl]="'https://img.icons8.com/fluency/96/000000/home.png'"> </app-topbar>
+    <div class="page">
+        <section class="main">
+            <div class="title">
+                <span style="color: rgb(202, 96, 255)">C</span><span style="color: rgb(255, 96, 96)">O</span
+                ><span style="color: rgb(96, 255, 122)">L</span><span style="color: rgb(96, 146, 255)">O</span
+                ><span style="color: rgb(255, 240, 123)">R</span>IMAGE
+            </div>
+            <div *ngIf="userService.userConnected" class="buttons">
+                <button mat-button [disabled]="!userService.userConnected" [matTooltip]="'vers les albums de dessins'" routerLink="/albums">
+                    <img class="icons8" src="https://img.icons8.com/fluency/96/000000/books.png" /> albums de dessins
+                </button>
+                <button mat-button [disabled]="!userService.userConnected" [matTooltip]="'vers mes dessins'" routerLink="/dessins">
+                    <img class="icons8" src="https://img.icons8.com/fluency/96/000000/edit.png" /> mes dessins
+                </button>
+                <button mat-button [disabled]="!userService.userConnected" [matTooltip]="'vers le concours'" routerLink="/concours">
+                    <img class="icons8" src="https://img.icons8.com/color/48/000000/medal2--v1.png" /> concours
+                </button>
+                <button mat-button [disabled]="!userService.userConnected" [matTooltip]="'vers le leaderboard'" routerLink="/leaderboard">
+                    <img class="icons8" src="https://img.icons8.com/fluency/48/000000/trophy.png" /> leaderboard
+                </button>
+            </div>
+            <div *ngIf="!userService.userConnected" class="buttons flex-column">
+                <app-login></app-login>
+            </div>
+        </section>
+        <app-chat
+            *ngIf="chatHandlerService.chatVisible && socketService.chatConnected && !chatHandlerService.chatInExternalWindow"
+            cdkDragBoundary=".page"
+            cdkDrag
+        >
+        </app-chat>
+    </div>
+</div>

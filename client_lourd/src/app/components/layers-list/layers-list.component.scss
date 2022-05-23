@@ -1,0 +1,132 @@
+.title {
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+.container {
+    width: 100%;
+}
+
+.layers-list {
+    width: 100%;
+    max-width: 100%;
+    min-height: 350px;
+    display: block;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    cursor: move;
+    background: white;
+    font-size: 14px;
+    margin: 4px;
+    border-radius: 4px;
+}
+
+.cdk-drag-preview {
+    background: rgb(249, 236, 255);
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+    opacity: 0;
+}
+
+.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.box:last-child {
+    border: none;
+}
+
+.layers-list.cdk-drop-list-dragging .box:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.viewport {
+    height: 350px;
+    width: 100%;
+    border: 1px solid black;
+}
+
+.item {
+    width: 100%;
+    padding: 8px;
+}
+
+.item-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+    padding-left: 5px;
+    justify-content: space-between;
+    font-weight: 500;
+}
+
+.selection {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    & > * {
+        margin-right: 8px;
+    }
+
+    & > img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+}
+
+.align-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+cdk-virtual-scroll-viewport {
+    border: 0 !important;
+}
+
+.selected {
+    background: rgb(213, 129, 255);
+    border-radius: 4px;
+}
+
+.boxContainer {
+    display: flex;
+    width: 50px;
+    padding: 0 8px;
+}
+
+.colorBox {
+    width: 15px;
+    margin: 0 8px;
+    height: 15px;
+}
+
+.button-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+}
+
+button {
+    width: 40px;
+    height: 40px;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

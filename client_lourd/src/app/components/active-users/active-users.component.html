@@ -1,0 +1,9 @@
+<section>
+    <header>usagers actifs</header>
+    <footer>
+        <div *ngFor="let user of users">
+            <img [src]="user.url" />
+            <span>{{ user.username }}</span>
+        </div>
+    </footer>
+</section>

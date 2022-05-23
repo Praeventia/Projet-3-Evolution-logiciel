@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="form">
+        <header>
+            <h2>inscription</h2>
+        </header>
+        <div class="input-zone">
+            <img class="frame" src="{{ this.avatarService.chosenAvatar }}" alt="Avatar" />
+            <div class="editPhoto">
+                <button
+                    (click)="openAvatarDialog()"
+                    matTooltipClass="tooltip"
+                    [matTooltip]="'Modifier son avatar'"
+                    matTooltipPosition="right"
+                    matTooltipShowDelay="500"
+                >
+                    <mat-icon class="icon-colour">photo_camera</mat-icon>
+                </button>
+            </div>
+            <div class="content">
+                <form>
+                    <mat-form-field class="pseudonyme">
+                        <mat-label>pseudonyme</mat-label>
+                        <input matInput [formControl]="usernameFormControl" id="username" />
+                        <mat-error *ngIf="usernameFormControl.hasError('pattern') && !usernameFormControl.hasError('required')">
+                            veuillez n'utiliser que des lettres, chiffres, des '_', des '-' ou des espaces
+                        </mat-error>
+                        <mat-error *ngIf="usernameFormControl.hasError('maxlength') && !usernameFormControl.hasError('required')">
+                            12 caractères maximum
+                        </mat-error>
+                        <mat-error *ngIf="usernameFormControl.hasError('required')"> Le pseudonyme est <strong>obligatoire</strong> </mat-error>
+                        <mat-error *ngIf="usernameFormControl.hasError('username_taken')"> le pseudonyme est déjà pris </mat-error>
+                    </mat-form-field>
+
+                    <br />
+
+                    <mat-form-field class="courriel">
+                        <mat-label>courriel</mat-label>
+                        <input type="email" matInput [formControl]="emailFormControl" id="email" />
+                        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                            veuillez enter un courriel valide
+                        </mat-error>
+                        <mat-error *ngIf="emailFormControl.hasError('required')"> le courriel est <strong>obligatoire</strong> </mat-error>
+                        <mat-error *ngIf="emailFormControl.hasError('email_taken')">ce courriel est déjà utilisé</mat-error>
+                    </mat-form-field>
+
+                    <br />
+
+                    <mat-form-field class="mot-de-passe">
+                        <mat-label>mot de passe</mat-label>
+                        <input type="password" matInput [type]="hide ? 'password' : 'text'" [formControl]="passwordFormControl" id="password" />
+                        <mat-icon matSuffix (click)="hide = !hide">{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                        <mat-error *ngIf="passwordFormControl.hasError('minLength') && !passwordFormControl.hasError('required')">
+                            veuillez entrer un mot de passe de plus de 1 caractères
+                        </mat-error>
+                        <mat-error *ngIf="passwordFormControl.hasError('required')"> le courriel est <strong>obligatoire</strong> </mat-error>
+                    </mat-form-field>
+                </form>
+            </div>
+        </div>
+
+        <footer>
+            <div class="submit">
+                <button mat-button routerLink="/home">annuler</button>
+                <button
+                    mat-button
+                    [disabled]="usernameFormControl.invalid || passwordFormControl.invalid || emailFormControl.invalid"
+                    color="primary"
+                    (click)="accept()"
+                >
+                    s'inscrire
+                </button>
+            </div>
+            <br />
+            <br />
+            <div class="signin">
+                <div>vous avez déjà un compte?</div>
+                <button mat-button routerLink="/signin">se connecter</button>
+            </div>
+        </footer>
+    </div>
+</div>

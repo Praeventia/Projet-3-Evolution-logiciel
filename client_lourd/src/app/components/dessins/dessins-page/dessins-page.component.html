@@ -1,0 +1,45 @@
+<section>
+    <app-topbar [pageTitle]="' dessins'" [pageUrl]="'https://img.icons8.com/fluency/96/000000/edit.png'"></app-topbar>
+    <mat-spinner [diameter]="100" class="center-spinner" *ngIf="drawingsService.isLoadingDrawings"></mat-spinner>
+    <section class="page" *ngIf="!drawingsService.isLoadingDrawings">
+        <header>
+            <mat-form-field>
+                <mat-label>🔍 rechercher un dessin</mat-label>
+                <mat-chip-list #chipList aria-label="Fruit selection">
+                    <mat-chip *ngFor="let filter of filterService.filters" (removed)="filterService.removeFilter(filter)">
+                        {{ filter }}
+                        <mat-icon matChipRemove>cancel</mat-icon>
+                    </mat-chip>
+                    <input
+                        placeholder="ajouter un filtre"
+                        #input
+                        type="text"
+                        (focus)="onFocus()"
+                        (blur)="onBlur()"
+                        [(ngModel)]="search"
+                        [matAutocomplete]="auto"
+                        [matChipInputFor]="chipList"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                        (matChipInputTokenEnd)="filterService.addFilter($event)"
+                    />
+                </mat-chip-list>
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                    <mat-option *ngFor="let filter of autoCompleteFilters()" [value]="filter">
+                        {{ filter }}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </header>
+        <ul>
+            <li *ngFor="let drawing of filteredDrawings">
+                <app-album-drawing [drawing]="drawing"></app-album-drawing>
+            </li>
+        </ul>
+        <app-chat
+            *ngIf="chatHandlerService.chatVisible && socketService.chatConnected && !chatHandlerService.chatInExternalWindow"
+            cdkDragBoundary=".page"
+            cdkDrag
+        >
+        </app-chat>
+    </section>
+</section>

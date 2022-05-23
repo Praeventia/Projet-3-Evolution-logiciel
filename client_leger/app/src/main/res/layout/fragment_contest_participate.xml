@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/padding_20"
+    tools:context=".Contest.Participate.ParticipateContestFragment">
+
+    <LinearLayout
+        android:id="@+id/content_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_marginBottom="@dimen/margin_20"
+        app:layout_constraintBottom_toTopOf="@+id/save_wrapper"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <LinearLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="@+id/content_wrapper"
+            app:layout_constraintTop_toTopOf="@+id/content_wrapper">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/contest_participate"
+                android:textSize="@dimen/h1"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:padding="@dimen/padding_10"/>
+
+            <TextView
+                android:id="@+id/start_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/h1"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:padding="@dimen/padding_10"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:background="@drawable/custom_border"
+            android:padding="@dimen/padding_20"
+            android:layout_marginStart="@dimen/margin_20"
+            android:layout_marginEnd="@dimen/margin_20"
+            app:layout_constraintEnd_toStartOf="@+id/save_wrapper"
+            app:layout_constraintStart_toStartOf="@+id/header">
+
+            <TextView
+                android:id="@+id/message"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/h3"
+                android:gravity="center"
+                android:visibility="gone"
+                android:padding="@dimen/padding_10"/>
+
+            <LinearLayout
+                android:id="@+id/contest_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/h4"
+                    android:gravity="start"
+                    android:text="@string/select_drawing_participate"
+                    android:padding="@dimen/padding_10"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_contest_participate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:clipToPadding="false"
+                    android:visibility="visible"
+                    tools:listitem="@layout/contest_participate">
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/save_wrapper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_margin="@dimen/margin_20"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+        <Button
+            android:id="@+id/participate_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/participate"
+            android:background="@drawable/button"
+            app:backgroundTint="@color/purple"
+            />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

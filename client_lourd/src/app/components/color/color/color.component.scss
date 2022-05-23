@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    cursor: auto;
+    height: 100%;
+    & > div {
+        margin: 8px;
+        font-weight: 500;
+        font-size: 1rem;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        & > span {
+            margin-bottom: 8px;
+        }
+    }
+}
+
+.stroke {
+    stroke: rgb(32, 32, 32);
+    stroke-opacity: 0.1;
+    stroke-width: 2;
+}
+
+.switch-colors {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+}

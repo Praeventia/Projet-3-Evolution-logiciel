@@ -1,0 +1,83 @@
+
+
+h2 {
+    font-weight: 800;
+}
+
+header {
+
+    width: 100%;
+    height: min-content;
+
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+
+footer
+{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+}
+
+input {
+    width: 100% !important;
+    height: min-content;
+}
+
+mat-form-field {
+    width: 100% !important;
+    height: min-content;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: none;
+
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 4px;
+    width: 100%;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    width: min-content;
+    height: min-content;
+}
+
+.submit {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: min-content;
+}
+
+.signup{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: min-content;
+}

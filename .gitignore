@@ -1,0 +1,19 @@
+#ignoring .vscode folder but we keep some files for debuging
+/.vscode/chrome
+/.vs/
+.vscode
+.vscode/
+
+.DS_Store
+.gradle
+.idea
+build.gradle
+
+# Code Coverage Folder
+coverage/
+
+#Node Modules
+/node_modules
+
+.vscode/launch.json
+.vscode/launch.json

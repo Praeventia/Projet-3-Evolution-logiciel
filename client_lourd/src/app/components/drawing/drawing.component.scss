@@ -1,0 +1,29 @@
+canvas {
+    cursor: crosshair;
+}
+
+.canvas {
+    z-index: 2;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    border-radius: 8px;
+}
+
+.previewLayer {
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    border-radius: 8px;
+}
+
+.selectionLayer {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    border-radius: 8px;
+}
+
+.canvas-container {
+    position: relative;
+}

@@ -1,0 +1,6 @@
+<div class="canvas-container">
+    <canvas class="canvas" #baseCanvas [attr.width]="DEFAULT_WIDTH" [attr.height]="DEFAULT_HEIGHT"></canvas>
+    <canvas class="previewLayer" #previewCanvas [attr.width]="DEFAULT_WIDTH" [attr.height]="DEFAULT_HEIGHT"></canvas>
+    <canvas class="selectionLayer" #selectionCanvas [attr.width]="DEFAULT_WIDTH" [attr.height]="DEFAULT_HEIGHT"></canvas>
+    <app-selection></app-selection>
+</div>

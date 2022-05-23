@@ -1,0 +1,58 @@
+<div class="container">
+    <app-topbar [pageUrl]="'https://img.icons8.com/fluency/96/000000/edit.png'" [pageTitle]="editorName()"></app-topbar>
+    <mat-spinner [diameter]="100" class="center-spinner" *ngIf="editorService.editorLoading"></mat-spinner>
+    <div class="footer" *ngIf="!editorService.editorLoading">
+        <header>
+            <button
+                mat-button
+                *ngIf="drawingsService.getDrawingByPath()?.isOwner"
+                (click)="editorService.edit()"
+                [matTooltip]="'paramètres du dessin'"
+            >
+                <i class="fa-solid fa-pen"></i>
+                <span>paramètres</span>
+            </button>
+            <button
+                mat-button
+                *ngIf="drawingsService.getDrawingByPath()?.isOwner"
+                [matTooltip]="'supprimer le dessin'"
+                (click)="drawingsService.delete(drawingsService.getDrawingByPath(), true)"
+            >
+                <i class="fa-solid fa-trash"></i>
+                <span>supprimer</span>
+            </button>
+            <button
+                mat-button
+                *ngIf="concoursService?.canPublishToConcours && drawingsService.getDrawingByPath()?.contributed"
+                [matTooltip]="'ajouter au concours'"
+                (click)="concoursService.upload($event, drawingsService.getDrawingByPath())"
+            >
+                <img class="icons8" [src]="'@app/../assets/icons8-heart-48.png'" />
+                <span>ajouter au concours</span>
+            </button>
+            <button
+                mat-button
+                (click)="drawingsService.downloadGif(drawingsService.getDrawingByPath())"
+                [matTooltip]="'télécharger de le gif du dessin'"
+            >
+                <i class="fa-solid fa-download"></i>
+                <span>télécharger le gif</span>
+            </button>
+        </header>
+
+        <footer>
+            <app-sidebar></app-sidebar>
+            <app-drawing *ngIf="!editorService.editorLoading" class="drawing" tabindex="0"></app-drawing>
+            <app-color-picker cdkDragBoundary=".footer" cdkDrag></app-color-picker>
+            <div class="draggables">
+                <app-chat
+                    *ngIf="chatHandler.chatVisible && socketService.chatConnected && !chatHandler.chatInExternalWindow"
+                    cdkDragBoundary=".footer"
+                    class="app-chat"
+                    cdkDrag
+                >
+                </app-chat>
+            </div>
+        </footer>
+    </div>
+</div>

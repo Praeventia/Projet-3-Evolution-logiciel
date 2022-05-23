@@ -1,0 +1,85 @@
+section {
+    display: flex;
+    flex-direction: column;
+    background-color: #ececec;
+    min-height: 100%;
+    height: max-content;
+    width: 100%;
+    & > div {
+        & > div:nth-of-type(1) {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: center;
+            font-weight: 500;
+            & > div:nth-of-type(1) {
+                display: flex;
+                flex-direction: row;
+                & > * {
+                    margin-left: 8px;
+                    width: fit-content;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    border-radius: 8px;
+                    background-color: white;
+                    padding: 4px 4px;
+                    margin-bottom: 8px;
+                }
+            }
+
+            & > div:nth-of-type(2) {
+                display: flex;
+                flex-direction: row;
+                align-self: center;
+                justify-self: center;
+                & > * {
+                    margin-left: 8px;
+                    width: fit-content;
+                    height: 100%;
+                    display: flex;
+                    border-radius: 8px;
+                    background-color: white;
+                    padding: 4px 4px;
+                    margin-bottom: 8px;
+                }
+            }
+        }
+        & > div:nth-of-type(2) {
+            display: flex;
+            flex-direction: row;
+            margin: 0px 8px;
+
+            & > div {
+                margin-right: 8px;
+                margin-bottom: 8px;
+            }
+        }
+    }
+}
+
+.participer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+    font-weight: 800;
+    font-size: 1.5em;
+    height: max-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    & > button {
+        margin-left: 8px;
+        width: fit-content;
+        height: 100%;
+        display: flex;
+        border-radius: 8px;
+        background-color: white;
+        padding: 4px 4px;
+        margin-bottom: 8px;
+        margin-top: 8px;
+    }
+}

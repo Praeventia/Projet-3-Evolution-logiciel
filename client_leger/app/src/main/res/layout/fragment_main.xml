@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Home.MainFragment">
+
+    <LinearLayout
+        android:id="@+id/profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/small_margin"
+            android:text="@string/welcome"
+            android:layout_gravity="center_vertical"
+            android:textSize="@dimen/h4"
+            />
+
+        <TextView
+            android:id="@+id/profile_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="@dimen/h4"
+            />
+
+        <ImageView
+            android:id="@+id/hand_image"
+            android:layout_width="@dimen/icon"
+            android:layout_height="@dimen/icon"
+            android:contentDescription="@string/welcome"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/hand"
+            />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/avatar_image"
+            android:layout_width="@dimen/icon_xl"
+            android:layout_height="@dimen/icon_xl"
+            android:layout_margin="@dimen/small_margin"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/button_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+        <include
+            android:id="@+id/logo"
+            layout="@layout/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/in_between_margin" />
+
+        <LinearLayout
+            android:id="@+id/create_drawing"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/button"
+            android:backgroundTint="@color/purple"
+            android:gravity="center_horizontal"
+            android:layout_margin="@dimen/small_margin"
+            android:padding="@dimen/padding_15">
+
+            <ImageView
+                android:id="@+id/pencil_image"
+                android:layout_width="@dimen/icon"
+                android:layout_height="@dimen/icon"
+                android:contentDescription="@string/pencil"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/pencil"
+                android:layout_marginEnd="@dimen/small_margin"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/create_drawing"
+                android:textColor="@color/black"
+                android:textFontWeight="900"
+                android:textAllCaps="true"
+                android:textSize="@dimen/button_text"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/join_drawing"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/button"
+            android:backgroundTint="@color/red"
+            android:gravity="center_horizontal"
+            android:layout_margin="@dimen/small_margin"
+            android:padding="@dimen/padding_15">
+
+            <ImageView
+                android:id="@+id/album_image"
+                android:layout_width="@dimen/icon"
+                android:layout_height="@dimen/icon"
+                android:contentDescription="@string/drawing"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/small_margin"
+                android:src="@drawable/multi_albums"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/join_drawing"
+                android:textColor="@color/black"
+                android:textAllCaps="true"
+                android:textFontWeight="900"
+                android:textSize="@dimen/button_text"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/contest"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/button"
+            android:backgroundTint="@color/green"
+            android:gravity="center_horizontal"
+            android:layout_margin="@dimen/small_margin"
+            android:padding="@dimen/padding_15">
+
+            <ImageView
+                android:id="@+id/contest_image"
+                android:layout_width="@dimen/icon"
+                android:layout_height="@dimen/icon"
+                android:contentDescription="@string/contest"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/first_place"
+                android:layout_marginEnd="@dimen/small_margin"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/contest"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textFontWeight="900"
+                android:textSize="@dimen/button_text"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/leaderboard"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/button"
+            android:backgroundTint="@color/blue"
+            android:gravity="center_horizontal"
+            android:layout_margin="@dimen/small_margin"
+            android:padding="@dimen/padding_15">
+
+            <ImageView
+                android:layout_width="@dimen/icon"
+                android:layout_height="@dimen/icon"
+                android:contentDescription="@string/contest"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/trophy"
+                android:layout_marginEnd="@dimen/small_margin"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/leaderboard"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textFontWeight="900"
+                android:textSize="@dimen/button_text"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal"
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/small_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        >
+
+        <TextView
+            android:id="@+id/singin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/signin"
+            android:textSize="@dimen/default_text" />
+
+        <TextView
+            android:id="@+id/division_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginRight="@dimen/small_margin"
+            android:text="@string/vertical_bar"
+            android:textSize="@dimen/default_text" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/login_wrapper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/login_image"
+                    android:layout_width="@dimen/icon"
+                    android:layout_height="@dimen/icon"
+                    android:contentDescription="@string/login"
+                    android:layout_marginEnd="@dimen/small_margin"
+                    android:src="@drawable/connect"
+                    />
+
+                <TextView
+                    android:id="@+id/login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="@dimen/default_text" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/logout_wrapper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/logout_image"
+                    android:layout_width="@dimen/icon"
+                    android:layout_height="@dimen/icon"
+                    android:contentDescription="@string/login"
+                    android:src="@drawable/disconnect"
+                    android:visibility="gone"
+                    />
+
+                <TextView
+                    android:id="@+id/logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="@dimen/default_text"
+                    android:visibility="gone"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/chat_icon_layout"
+        android:id="@+id/chat_info" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
